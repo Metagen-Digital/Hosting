@@ -1,0 +1,90 @@
+import { z } from 'zod'
+
+const schema = z.object({
+  domainName:  z.string().optional(),
+  companyName: z.string().optional(),
+  fullName:    z.string().min(2),
+  phone:       z.string().regex(/^01\d{9}$/),
+  email:       z.string().email(),
+  address:     z.string().min(5),
+  plan:        z.string(),
+  billing:     z.enum(['monthly', 'yearly']),
+  price:       z.number().positive(),
+  payMethod:   z.enum(['bkash', 'nagad', 'rocket', 'upay']),
+  txId:        z.string().min(5),
+  sendFrom:    z.string().regex(/^01\d{9}$/),
+})
+
+function orderId() {
+  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+  let id = 'MGD-'
+  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)]
+  return id
+}
+
+export default defineEventHandler(async (event) => {
+  const body = await readBody(event)
+  const parsed = schema.safeParse(body)
+  if (!parsed.success) {
+    throw createError({ statusCode: 400, message: 'Invalid form data' })
+  }
+
+  const d = parsed.data
+  const id = orderId()
+  const config = useRuntimeConfig()
+
+  // Send email via nodemailer (only if SMTP configured)
+  if (config.smtpHost && config.smtpUser && config.smtpPass) {
+    const nodemailer = await import('nodemailer')
+    const transporter = nodemailer.createTransport({
+      host: config.smtpHost,
+      port: Number(config.smtpPort),
+      secure: Number(config.smtpPort) === 465,
+      auth: { user: config.smtpUser, pass: config.smtpPass },
+    })
+
+    const adminHtml = `
+<h2>🆕 New Hosting Order — ${id}</h2>
+<table style="border-collapse:collapse;width:100%;font-family:sans-serif;font-size:14px">
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Order ID</td><td style="padding:8px;border:1px solid #eee">${id}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Domain</td><td style="padding:8px;border:1px solid #eee">${d.domainName || '—'}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Plan</td><td style="padding:8px;border:1px solid #eee">${d.plan} — ${d.billing} — ৳${d.price.toLocaleString()}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Company</td><td style="padding:8px;border:1px solid #eee">${d.companyName || '—'}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Name</td><td style="padding:8px;border:1px solid #eee">${d.fullName}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Phone</td><td style="padding:8px;border:1px solid #eee">${d.phone}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Email</td><td style="padding:8px;border:1px solid #eee">${d.email}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Address</td><td style="padding:8px;border:1px solid #eee">${d.address}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9;color:#E2136E">Payment Method</td><td style="padding:8px;border:1px solid #eee;font-weight:bold">${d.payMethod.toUpperCase()}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Transaction ID</td><td style="padding:8px;border:1px solid #eee;font-family:monospace">${d.txId}</td></tr>
+  <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Send From</td><td style="padding:8px;border:1px solid #eee;font-family:monospace">${d.sendFrom}</td></tr>
+</table>
+<p style="margin-top:16px;color:#666;font-family:sans-serif;font-size:13px">
+  ✅ <strong>Action:</strong> Verify payment → Setup on Verpex → Call ${d.phone}
+</p>`
+
+    await transporter.sendMail({
+      from: `"MetaGen Hosting" <${config.smtpUser}>`,
+      to: config.adminEmail,
+      subject: `🆕 New Order ${id} — ${d.plan} — ${d.phone}`,
+      html: adminHtml,
+    })
+
+    // Customer confirmation
+    await transporter.sendMail({
+      from: `"MetaGen Hosting" <${config.smtpUser}>`,
+      to: d.email,
+      subject: `✅ Order Received — ${id} | MetaGen Hosting`,
+      html: `
+<h2>আপনার Order পাওয়া গেছে! — ${id}</h2>
+<p>প্রিয় ${d.fullName},</p>
+<p>আপনার order সফলভাবে পাঠানো হয়েছে। আমরা payment verify করে ২৪ ঘণ্টার মধ্যে আপনার hosting setup করব।</p>
+<p><strong>Plan:</strong> ${d.plan} (${d.billing})<br/>
+<strong>Amount:</strong> ৳${d.price.toLocaleString()}<br/>
+<strong>TxID:</strong> ${d.txId}</p>
+<p>যেকোনো প্রশ্নে call করুন: <strong>01915557363</strong></p>
+<p>ধন্যবাদ<br/>MetaGen Hosting Team</p>`,
+    })
+  }
+
+  return { success: true, orderId: id }
+})

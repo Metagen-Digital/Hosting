@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "domain":  "Domain",
+    "hosting": "Hosting",
+    "faq":     "FAQ",
+    "contact": "Contact",
+    "orderNow": "Order Now"
+  },
+  "hero": {
+    "badge":       "Verpex Powered Reseller",
+    "headline1":   "Find Your Perfect",
+    "headline2":   "Domain",
+    "headline3":   "Today",
+    "sub":         "Professional domain & hosting — Made affordable for Bangladesh. Pay with bKash, Nagad, Rocket or Upay.",
+    "placeholder": "yourdomain.com",
+    "searchBtn":   "Search",
+    "selectTld":   "Select TLD",
+    "available":   "Available!",
+    "taken":       "Already taken — try alternatives below",
+    "searchAgain": "Search again",
+    "perYear":     "/year",
+    "register":    "Register →",
+    "proof": {
+      "secure":  "100% Secure",
+      "setup":   "24h Setup",
+      "support": "Local Support BD",
+      "powered": "Verpex Powered"
+    }
+  },
+  "plans": {
+    "badge":      "Hosting Plans",
+    "heading1":   "Choose a Plan That",
+    "heading2":   "Fits Your Budget",
+    "sub":        "All plans include Free SSL, Daily Backup and Verpex world-class infrastructure.",
+    "monthly":    "Monthly",
+    "yearly":     "Yearly",
+    "save":       "Save 20%",
+    "perMonth":   "/month",
+    "yearlyBill": "Billed annually at ৳{price}",
+    "monthlyBill":"Billed monthly",
+    "orderNow":   "Order Now →",
+    "note":       "All plans include 30-day money-back guarantee ·",
+    "learnMore":  "Learn more",
+    "starter": {
+      "name":    "Starter",
+      "tagline": "Perfect for getting started"
+    },
+    "business": {
+      "name":    "Business",
+      "tagline": "For growing businesses",
+      "badge":   "Most Popular"
+    },
+    "enterprise": {
+      "name":    "Enterprise",
+      "tagline": "For professionals"
+    },
+    "features": {
+      "ssd5":          "5 GB SSD Storage",
+      "ssd20":         "20 GB SSD Storage",
+      "ssd50":         "50 GB NVMe SSD",
+      "site1":         "1 Website",
+      "site5":         "5 Websites",
+      "siteUnlimited": "Unlimited Websites",
+      "email5":        "5 Email Accounts",
+      "emailUnlimited":"Unlimited Email Accounts",
+      "ssl":           "Free SSL Certificate",
+      "backupDaily":   "Daily Backup",
+      "backupHourly":  "Hourly Backup",
+      "bw10":          "10 GB Bandwidth",
+      "bwUnlimited":   "Unlimited Bandwidth",
+      "freeDomain":    "Free Domain (1 year)",
+      "priority":      "Priority Support 24/7"
+    }
+  },
+  "whyus": {
+    "badge":   "Why MetaGen Hosting",
+    "heading": "Why Choose Us?",
+    "sub":     "We don't just sell hosting — we help your business grow online.",
+    "stats": {
+      "uptime":   "Uptime SLA",
+      "setup":    "Setup Guarantee",
+      "from":     "Starting from",
+      "secure":   "Secure"
+    },
+    "features": {
+      "verpex":   { "title": "Verpex Infrastructure",  "desc": "World-class server infrastructure with 99.9% uptime SLA guarantee." },
+      "ssl":      { "title": "Free SSL Always",         "desc": "Let's Encrypt auto-renewal — your site stays HTTPS secured at all times." },
+      "setup":    { "title": "24h Setup",               "desc": "After order confirmation, your hosting is ready in 24 hours — helpline call included." },
+      "support":  { "title": "Local Support",           "desc": "Bangladeshi local team — get help in Bangla for any issue you face." },
+      "payment":  { "title": "Mobile Payment",          "desc": "bKash, Nagad, Rocket, Upay — pay easily with any MFS." },
+      "backup":   { "title": "Daily Backup",            "desc": "Automatic daily backups — your data is always safe." }
+    }
+  },
+  "how": {
+    "badge":   "How It Works",
+    "heading1": "Get Started in Just",
+    "heading2": "4 Simple Steps",
+    "sub":     "No technical knowledge required — we set everything up for you.",
+    "cta":     "Get Started Now",
+    "steps": {
+      "search":  { "title": "Search Domain",   "desc": "Type your desired domain name in the search box above and check availability." },
+      "plan":    { "title": "Choose a Plan",   "desc": "Select Starter, Business or Enterprise based on your budget and needs." },
+      "pay":     { "title": "Make Payment",    "desc": "Send payment via bKash, Nagad, Rocket or Upay and submit the Transaction ID." },
+      "live":    { "title": "Go Live",         "desc": "Your hosting will be set up within 24 hours — we'll call you from the helpline." }
+    }
+  },
+  "faq": {
+    "badge":   "FAQ",
+    "heading": "Frequently Asked Questions",
+    "sub":     "Have more questions? Call us directly —",
+    "items": [
+      {
+        "q": "How long does domain registration take?",
+        "a": "After payment confirmation, your domain and hosting are fully set up within 24 hours. Our helpline will call you to confirm."
+      },
+      {
+        "q": "Which payment methods are accepted?",
+        "a": "We currently accept bKash, Nagad, Rocket and Upay. Send money to personal number 01915557363 and submit the Transaction ID in the order form."
+      },
+      {
+        "q": "Can I buy hosting monthly or yearly?",
+        "a": "Both options are available. Yearly saves approximately 20% and includes a free domain for 1 year."
+      },
+      {
+        "q": "Do I need technical knowledge?",
+        "a": "No! We set everything up for you. cPanel access is provided and our support team is always ready to help."
+      },
+      {
+        "q": "Is an SSL Certificate included?",
+        "a": "Yes, all plans include a Free SSL (Let's Encrypt) certificate that auto-renews. Your site will always be on HTTPS."
+      },
+      {
+        "q": "How do I renew my hosting?",
+        "a": "We'll remind you by email and phone before your hosting expires. Renewal follows the same payment process."
+      },
+      {
+        "q": "Can I upgrade my plan later?",
+        "a": "Yes, you can upgrade at any time. A proportional charge will be applied for the remaining days."
+      },
+      {
+        "q": "Will I get cPanel access?",
+        "a": "Yes, you'll get cPanel access. We're currently in manual process mode — a WHMCS client portal will be launched in the future."
+      }
+    ]
+  },
+  "cta": {
+    "heading": "Start Now — We're Here to Help",
+    "sub":     "Your domain & hosting will be set up within 24 hours. Call us anytime.",
+    "orderNow": "Order Now",
+    "whatsapp": "WhatsApp Us",
+    "responseTime": "Response within 24 hours"
+  },
+  "footer": {
+    "tagline":     "Powered by Verpex — Professional domain & hosting for Bangladesh.",
+    "quickLinks":  "Quick Links",
+    "support":     "Support",
+    "rights":      "All rights reserved.",
+    "links": {
+      "domain":  "Domain Search",
+      "hosting": "Hosting Plans",
+      "how":     "How It Works",
+      "faq":     "FAQ",
+      "order":   "Order Now"
+    }
+  },
+  "order": {
+    "title":       "Place Your Order",
+    "sub":         "Fill in all details correctly — your hosting will be set up within 24 hours of payment confirmation.",
+    "back":        "Back to home",
+    "choosePlan":  "Choose Your Plan",
+    "billing":     "Billing:",
+    "monthly":     "Monthly",
+    "yearlySave":  "Yearly (Save 20%)",
+    "details":     "Your Details",
+    "domain":      "Domain Name",
+    "company":     "Company Name (optional)",
+    "name":        "Your Name",
+    "phone":       "Mobile Number",
+    "email":       "Email",
+    "address":     "Address",
+    "payment":     "Make Payment",
+    "payTo":       "Send payment to",
+    "personal":    "(Personal)",
+    "amount":      "Amount:",
+    "amountNote":  "Send then enter the Transaction ID below.",
+    "txId":        "Transaction ID",
+    "sendFrom":    "Your Number (Send From)",
+    "submit":      "Submit Order →",
+    "submitting":  "Submitting...",
+    "terms":       "By submitting, you agree to our",
+    "termsLink":   "Terms",
+    "errorGeneral":"Something went wrong. Try again or call us.",
+    "summary":     "Order Summary",
+    "plan":        "Plan",
+    "billingLabel":"Billing",
+    "domainLabel": "Domain",
+    "total":       "Total",
+    "perMonth":    "/month",
+    "perYear":     "/year",
+    "included":    "Included",
+    "includedItems": ["Free SSL Certificate", "Daily Backup", "cPanel Access", "24h Setup", "Helpline Support"],
+    "help":        "Need Help?",
+    "helpSub":     "Call us anytime",
+    "namePlaceholder":    "Mohammad Tanvir",
+    "phonePlaceholder":   "01XXXXXXXXX",
+    "domainPlaceholder":  "yourdomain.com",
+    "companyPlaceholder": "ABC Company",
+    "addressPlaceholder": "Dhaka, Bangladesh",
+    "txPlaceholder":      "TXN123456789",
+    "errors": {
+      "name":     "Please enter your name",
+      "phone":    "Enter a valid mobile number",
+      "email":    "Enter a valid email",
+      "address":  "Enter your address",
+      "payMethod":"Please select a payment method",
+      "txId":     "Enter the Transaction ID",
+      "sendFrom": "Enter your mobile number"
+    }
+  },
+  "thankyou": {
+    "badge":   "Order Received",
+    "heading": "Thank You! 🎉",
+    "body":    "Your order has been successfully submitted. We will verify the payment and set up your domain & hosting within {hours}.",
+    "hours":   "24 hours",
+    "orderId": "Order Reference",
+    "saveId":  "Please save this ID",
+    "next":    "What Happens Next",
+    "steps": [
+      "We will verify your payment (usually within a few hours).",
+      "After payment confirmation, your hosting will be set up on Verpex.",
+      "Once setup is complete, our helpline will call you on the number you provided.",
+      "cPanel login credentials will be sent to your email."
+    ],
+    "home":  "Back to Home",
+    "call":  "01915557363",
+    "emailNote": "For issues, email:"
+  }
+}

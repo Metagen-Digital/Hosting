@@ -9,6 +9,7 @@ export default defineNuxtConfig({
     '@vueuse/motion/nuxt',
     '@nuxt/icon',
     '@nuxt/image',
+    '@nuxtjs/i18n',
   ],
 
   css: ['~/assets/css/main.css'],
@@ -57,6 +58,23 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',
     },
+  },
+
+  i18n: {
+    locales: [
+      { code: 'en', language: 'en-US', name: 'English', dir: 'ltr', file: 'en.json' },
+      { code: 'bn', language: 'bn-BD', name: 'বাংলা',   dir: 'ltr', file: 'bn.json' },
+    ],
+    lazy: true,
+    langDir: 'locales',
+    defaultLocale: 'en',
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: {
+      useCookie: true,
+      cookieKey: 'i18n_locale',
+      redirectOn: 'root',
+    },
+    vueI18n: './i18n.config.ts',
   },
 
   icon: {

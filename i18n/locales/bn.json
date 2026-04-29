@@ -1,0 +1,238 @@
+{
+  "nav": {
+    "domain":  "ডোমেইন",
+    "hosting": "হোস্টিং",
+    "faq":     "প্রশ্নোত্তর",
+    "contact": "যোগাযোগ",
+    "orderNow": "অর্ডার করুন"
+  },
+  "hero": {
+    "badge":       "ভার্পেক্স পাওয়ার্ড রিসেলার",
+    "headline1":   "আপনার স্বপ্নের",
+    "headline2":   "ডোমেইন",
+    "headline3":   "খুঁজুন",
+    "sub":         "পেশাদার ডোমেইন ও হোস্টিং — বাংলাদেশের জন্য সাশ্রয়ী দামে। বিকাশ, নগদ, রকেট বা উপায়ে payment করুন।",
+    "placeholder": "আপনার ডোমেইন লিখুন...",
+    "searchBtn":   "খুঁজুন",
+    "selectTld":   "TLD বেছে নিন",
+    "available":   "পাওয়া যাচ্ছে! ✓",
+    "taken":       "নেওয়া হয়ে গেছে — নিচের alternatives try করুন",
+    "searchAgain": "আবার খুঁজুন",
+    "perYear":     "/বছর",
+    "register":    "রেজিস্টার করুন →",
+    "proof": {
+      "secure":  "১০০% নিরাপদ",
+      "setup":   "২৪ ঘণ্টায় Setup",
+      "support": "স্থানীয় সাপোর্ট",
+      "powered": "ভার্পেক্স পাওয়ার্ড"
+    }
+  },
+  "plans": {
+    "badge":      "হোস্টিং প্যাকেজ",
+    "heading1":   "আপনার বাজেট অনুযায়ী",
+    "heading2":   "প্যাকেজ বেছে নিন",
+    "sub":        "সব প্যাকেজে আছে ফ্রি SSL, ডেইলি ব্যাকআপ এবং ভার্পেক্সের বিশ্বমানের অবকাঠামো।",
+    "monthly":    "মাসিক",
+    "yearly":     "বার্ষিক",
+    "save":       "২০% সাশ্রয়",
+    "perMonth":   "/মাস",
+    "yearlyBill": "বার্ষিক ৳{price} একসাথে payment",
+    "monthlyBill": "প্রতি মাসে payment",
+    "orderNow":   "অর্ডার করুন →",
+    "note":       "সব প্যাকেজে আছে ৩০ দিনের মানি-ব্যাক গ্যারান্টি ·",
+    "learnMore":  "আরো জানুন",
+    "starter": {
+      "name":    "স্টার্টার",
+      "tagline": "শুরু করার জন্য পারফেক্ট"
+    },
+    "business": {
+      "name":    "বিজনেস",
+      "tagline": "Growing business এর জন্য",
+      "badge":   "সবচেয়ে জনপ্রিয়"
+    },
+    "enterprise": {
+      "name":    "এন্টারপ্রাইজ",
+      "tagline": "প্রফেশনালদের জন্য"
+    },
+    "features": {
+      "ssd5":          "৫ জিবি SSD স্টোরেজ",
+      "ssd20":         "২০ জিবি SSD স্টোরেজ",
+      "ssd50":         "৫০ জিবি NVMe SSD",
+      "site1":         "১টি ওয়েবসাইট",
+      "site5":         "৫টি ওয়েবসাইট",
+      "siteUnlimited": "সীমাহীন ওয়েবসাইট",
+      "email5":        "৫টি ইমেইল অ্যাকাউন্ট",
+      "emailUnlimited":"সীমাহীন ইমেইল অ্যাকাউন্ট",
+      "ssl":           "ফ্রি SSL সার্টিফিকেট",
+      "backupDaily":   "ডেইলি ব্যাকআপ",
+      "backupHourly":  "প্রতি ঘণ্টায় ব্যাকআপ",
+      "bw10":          "১০ জিবি ব্যান্ডউইথ",
+      "bwUnlimited":   "সীমাহীন ব্যান্ডউইথ",
+      "freeDomain":    "ফ্রি ডোমেইন (১ বছর)",
+      "priority":      "প্রায়রিটি সাপোর্ট ২৪/৭"
+    }
+  },
+  "whyus": {
+    "badge":   "কেন MetaGen Hosting",
+    "heading": "কেন আমাদের বেছে নেবেন?",
+    "sub":     "আমরা শুধু হোস্টিং বিক্রি করি না — আপনার ব্যবসাকে অনলাইনে grow করতে সাহায্য করি।",
+    "stats": {
+      "uptime":  "আপটাইম SLA",
+      "setup":   "সেটআপ গ্যারান্টি",
+      "from":    "থেকে শুরু",
+      "secure":  "নিরাপদ"
+    },
+    "features": {
+      "verpex":  { "title": "ভার্পেক্স অবকাঠামো",    "desc": "বিশ্বমানের সার্ভার অবকাঠামো — ৯৯.৯% আপটাইম SLA গ্যারান্টি সহ।" },
+      "ssl":     { "title": "সবসময় ফ্রি SSL",         "desc": "Let's Encrypt অটো-রিনিউয়াল — আপনার সাইট সবসময় HTTPS এ নিরাপদ থাকবে।" },
+      "setup":   { "title": "২৪ ঘণ্টায় সেটআপ",       "desc": "অর্ডার নিশ্চিত হলে ২৪ ঘণ্টার মধ্যে হোস্টিং রেডি — helpline থেকে call।" },
+      "support": { "title": "বাংলায় সাপোর্ট",         "desc": "স্থানীয় বাংলাদেশি দল — যেকোনো সমস্যায় বাংলায় সাহায্য পান।" },
+      "payment": { "title": "মোবাইল পেমেন্ট",         "desc": "বিকাশ, নগদ, রকেট, উপায় — যেকোনো MFS দিয়ে সহজেই payment করুন।" },
+      "backup":  { "title": "ডেইলি ব্যাকআপ",          "desc": "প্রতিদিন অটোমেটিক ব্যাকআপ — আপনার ডেটা সবসময় নিরাপদ।" }
+    }
+  },
+  "how": {
+    "badge":    "কীভাবে কাজ করে",
+    "heading1": "মাত্র",
+    "heading2": "৪টি সহজ ধাপে শুরু করুন",
+    "sub":      "কোনো technical জ্ঞান ছাড়াই — আমরা সব কিছু setup করে দেব।",
+    "cta":      "এখনই শুরু করুন",
+    "steps": {
+      "search": { "title": "ডোমেইন খুঁজুন",     "desc": "উপরের search box এ আপনার পছন্দের domain লিখুন এবং availability check করুন।" },
+      "plan":   { "title": "প্যাকেজ বেছে নিন",  "desc": "আপনার budget ও প্রয়োজন অনুযায়ী Starter, Business বা Enterprise বেছে নিন।" },
+      "pay":    { "title": "পেমেন্ট করুন",       "desc": "বিকাশ, নগদ, রকেট বা উপায়ে payment করুন এবং Transaction ID জমা দিন।" },
+      "live":   { "title": "সাইট চালু করুন",    "desc": "২৪ ঘণ্টার মধ্যে হোস্টিং সেটআপ হবে — helpline থেকে আপনাকে call করা হবে।" }
+    }
+  },
+  "faq": {
+    "badge":   "সাধারণ জিজ্ঞাসা",
+    "heading": "সাধারণ জিজ্ঞাসা",
+    "sub":     "আরো প্রশ্ন থাকলে সরাসরি call করুন —",
+    "items": [
+      {
+        "q": "Domain registration কত দিনে হয়?",
+        "a": "Payment confirm হওয়ার পর সাধারণত ২৪ ঘণ্টার মধ্যে আপনার domain ও hosting সম্পূর্ণ setup করা হয়। আমাদের helpline থেকে আপনাকে call করে জানানো হবে।"
+      },
+      {
+        "q": "কোন payment method accept করা হয়?",
+        "a": "বর্তমানে বিকাশ, নগদ, রকেট এবং উপায়ে payment গ্রহণ করা হয়। Personal number 01915557363 এ Send Money করতে হবে এবং Transaction ID form এ submit করতে হবে।"
+      },
+      {
+        "q": "কতদিনের জন্য hosting কিনতে পারব?",
+        "a": "Monthly বা Yearly দুইভাবেই নিতে পারবেন। Yearly নিলে প্রায় ২০% সাশ্রয় হয় এবং ১ বছরের জন্য Free Domain পাবেন।"
+      },
+      {
+        "q": "আমার কি technical জ্ঞান দরকার?",
+        "a": "না! আমরা সব setup করে দেব। cPanel access দেওয়া হবে এবং যেকোনো সমস্যায় আমাদের support team সাহায্য করবে।"
+      },
+      {
+        "q": "SSL Certificate কি আলাদা কিনতে হবে?",
+        "a": "না, সব plan এ Free SSL (Let's Encrypt) দেওয়া হয় যা auto-renewal হয়। আপনার site সবসময় HTTPS এ থাকবে।"
+      },
+      {
+        "q": "Hosting renewal কীভাবে করব?",
+        "a": "Hosting expire হওয়ার আগে আমরা আপনাকে email ও phone এ remind করব। একই payment process এ renewal করা যাবে।"
+      },
+      {
+        "q": "পরে কি plan upgrade করতে পারব?",
+        "a": "হ্যাঁ, যেকোনো সময় plan upgrade করা যাবে। Upgrade করলে বাকি দিনের proportional charge নেওয়া হবে।"
+      },
+      {
+        "q": "cPanel access পাব?",
+        "a": "হ্যাঁ, cPanel access পাবেন। এখন manual process এ কাজ করছি — ভবিষ্যতে WHMCS client portal চালু হবে।"
+      }
+    ]
+  },
+  "cta": {
+    "heading": "এখনই শুরু করুন — আমরা পাশে আছি",
+    "sub":     "২৪ ঘণ্টার মধ্যে আপনার domain ও hosting setup করে দেব। যেকোনো প্রশ্নে call করুন।",
+    "orderNow": "অর্ডার করুন",
+    "whatsapp": "WhatsApp করুন",
+    "responseTime": "২৪ ঘণ্টার মধ্যে response"
+  },
+  "footer": {
+    "tagline":    "ভার্পেক্স পাওয়ার্ড — বাংলাদেশের জন্য পেশাদার ডোমেইন ও হোস্টিং।",
+    "quickLinks": "দ্রুত লিংক",
+    "support":    "সাপোর্ট",
+    "rights":     "সকল অধিকার সংরক্ষিত।",
+    "links": {
+      "domain":  "ডোমেইন সার্চ",
+      "hosting": "হোস্টিং প্যাকেজ",
+      "how":     "কীভাবে কাজ করে",
+      "faq":     "প্রশ্নোত্তর",
+      "order":   "অর্ডার করুন"
+    }
+  },
+  "order": {
+    "title":       "অর্ডার করুন",
+    "sub":         "সব তথ্য সঠিকভাবে পূরণ করুন — payment confirm হলে ২৪ ঘণ্টায় setup হবে।",
+    "back":        "হোমে ফিরুন",
+    "choosePlan":  "প্যাকেজ বেছে নিন",
+    "billing":     "Billing:",
+    "monthly":     "মাসিক",
+    "yearlySave":  "বার্ষিক (২০% সাশ্রয়)",
+    "details":     "আপনার তথ্য",
+    "domain":      "ডোমেইন নাম",
+    "company":     "কোম্পানির নাম (ঐচ্ছিক)",
+    "name":        "আপনার নাম",
+    "phone":       "মোবাইল নম্বর",
+    "email":       "ইমেইল",
+    "address":     "ঠিকানা",
+    "payment":     "পেমেন্ট করুন",
+    "payTo":       "এখানে পাঠান",
+    "personal":    "(ব্যক্তিগত)",
+    "amount":      "পরিমাণ:",
+    "amountNote":  "পাঠানোর পরে নিচে Transaction ID দিন।",
+    "txId":        "Transaction ID",
+    "sendFrom":    "আপনার নম্বর (কোথা থেকে পাঠিয়েছেন)",
+    "submit":      "অর্ডার Submit করুন →",
+    "submitting":  "পাঠানো হচ্ছে...",
+    "terms":       "Submit করলে আমাদের",
+    "termsLink":   "শর্তাবলী",
+    "errorGeneral":"কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন বা call করুন।",
+    "summary":     "অর্ডার সারসংক্ষেপ",
+    "plan":        "প্যাকেজ",
+    "billingLabel":"Billing",
+    "domainLabel": "ডোমেইন",
+    "total":       "মোট",
+    "perMonth":    "/মাস",
+    "perYear":     "/বছর",
+    "included":    "অন্তর্ভুক্ত",
+    "includedItems": ["ফ্রি SSL সার্টিফিকেট", "ডেইলি ব্যাকআপ", "cPanel অ্যাক্সেস", "২৪ঘণ্টায় সেটআপ", "হেল্পলাইন সাপোর্ট"],
+    "help":        "সাহায্য দরকার?",
+    "helpSub":     "যেকোনো প্রশ্নে call করুন",
+    "namePlaceholder":    "মোহাম্মদ তানভীর",
+    "phonePlaceholder":   "০১XXXXXXXXX",
+    "domainPlaceholder":  "yourdomain.com",
+    "companyPlaceholder": "ABC Company",
+    "addressPlaceholder": "ঢাকা, বাংলাদেশ",
+    "txPlaceholder":      "TXN123456789",
+    "errors": {
+      "name":     "নাম দিন",
+      "phone":    "সঠিক mobile number দিন",
+      "email":    "সঠিক email দিন",
+      "address":  "Address দিন",
+      "payMethod":"Payment method select করুন",
+      "txId":     "Transaction ID দিন",
+      "sendFrom": "আপনার নম্বর দিন"
+    }
+  },
+  "thankyou": {
+    "badge":   "অর্ডার পাওয়া গেছে",
+    "heading": "ধন্যবাদ! 🎉",
+    "body":    "আপনার অর্ডার সফলভাবে পাঠানো হয়েছে। আমরা payment verify করে {hours} এর মধ্যে আপনার domain ও hosting setup করব।",
+    "hours":   "২৪ ঘণ্টা",
+    "orderId": "অর্ডার রেফারেন্স",
+    "saveId":  "এই ID টি সংরক্ষণ করুন",
+    "next":    "পরবর্তী পদক্ষেপ",
+    "steps": [
+      "আমরা আপনার payment টি verify করব (সাধারণত কয়েক ঘণ্টার মধ্যে)।",
+      "Payment confirm হলে Verpex এ আপনার hosting setup করা হবে।",
+      "Setup complete হলে helpline থেকে আপনার দেওয়া নম্বরে call করা হবে।",
+      "cPanel login credentials আপনার email এ পাঠানো হবে।"
+    ],
+    "home":      "Home এ ফিরুন",
+    "call":      "01915557363",
+    "emailNote": "সমস্যার জন্য email করুন:"
+  }
+}

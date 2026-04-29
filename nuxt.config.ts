@@ -53,7 +53,7 @@ export default defineNuxtConfig({
     smtpPort: process.env.SMTP_PORT || '587',
     smtpUser: process.env.SMTP_USER || '',
     smtpPass: process.env.SMTP_PASS || '',
-    adminEmail: process.env.ADMIN_EMAIL || 'bytestacklab@gmail.com',
+    adminEmail: process.env.ADMIN_EMAIL || 'hello@metagendigital.com',
     whoisApiKey: process.env.WHOIS_API_KEY || '',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',

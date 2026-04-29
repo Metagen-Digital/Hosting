@@ -39,7 +39,7 @@ const payMethods = [
   { id: 'upay',   label: 'Upay',   color: '#00A859', icon: 'mdi:cellphone' },
 ]
 
-const adminPhone = '01915557363'
+const adminPhone = '01970-222573'
 
 /* ── Validation ── */
 const errors = reactive<Record<string, string>>({})
@@ -316,7 +316,7 @@ async function submit() {
           <div class="bg-brand-surface rounded-2xl border border-brand-border p-5 text-center">
             <Icon name="mdi:headset" class="w-8 h-8 text-brand-primary mx-auto mb-2" aria-hidden="true" />
             <p class="text-sm font-medium text-brand-primary mb-1">সাহায্য দরকার?</p>
-            <a href="tel:+8801915557363" class="text-lg font-bold text-brand-primary hover:underline">01915557363</a>
+            <a href="tel:+8801970222573" class="text-lg font-bold text-brand-primary hover:underline">01970-222573</a>
             <p class="text-xs text-brand-text-muted mt-1">যেকোনো প্রশ্নে call করুন</p>
           </div>
         </div>

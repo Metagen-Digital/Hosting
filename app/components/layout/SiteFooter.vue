@@ -23,8 +23,11 @@ const footerLinks = computed(() => [
           <p class="text-sm text-brand-footer-text/70 leading-relaxed max-w-xs">
             {{ t('footer.tagline') }}
           </p>
-          <p class="mt-4 text-sm text-brand-footer-text/70">
-            📞 <a href="tel:+8801915557363" class="hover:text-white transition-colors">01915557363</a>
+          <p class="mt-3 text-sm text-brand-footer-text/70">
+            📍 {{ t('footer.address') }}
+          </p>
+          <p class="mt-2 text-sm text-brand-footer-text/70">
+            📞 <a href="tel:+8801970222573" class="hover:text-white transition-colors">01970-222573</a>
           </p>
         </div>
 
@@ -44,8 +47,9 @@ const footerLinks = computed(() => [
         <div>
           <h3 class="text-sm font-semibold text-white mb-3 uppercase tracking-wider">{{ t('footer.support') }}</h3>
           <ul class="space-y-2 text-sm text-brand-footer-text/70">
-            <li>📧 bytestacklab@gmail.com</li>
-            <li>📞 01915557363</li>
+            <li>📧 <a href="mailto:hello@metagendigital.com" class="hover:text-white transition-colors">hello@metagendigital.com</a></li>
+            <li>📧 <a href="mailto:metagendigital@gmail.com" class="hover:text-white transition-colors">metagendigital@gmail.com</a></li>
+            <li>📞 <a href="tel:+8801970222573" class="hover:text-white transition-colors">+88 01970-222573</a></li>
             <li>⏰ {{ t('cta.responseTime') }}</li>
           </ul>
         </div>
@@ -53,7 +57,7 @@ const footerLinks = computed(() => [
 
       <div class="border-t border-brand-footer-border pt-6 flex flex-col sm:flex-row items-center justify-between gap-2 text-xs text-brand-footer-text/50">
         <p>© {{ new Date().getFullYear() }} MetaGenDigital. {{ t('footer.rights') }}</p>
-        <p>Powered by <span class="text-brand-orange">Verpex</span></p>
+        <p class="text-brand-footer-text/40">MetaGenDigital Hosting Services</p>
       </div>
     </div>
   </footer>

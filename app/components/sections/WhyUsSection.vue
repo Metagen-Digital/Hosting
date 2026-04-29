@@ -2,7 +2,7 @@
 const { t } = useI18n()
 
 const featureKeys = [
-  { key: 'verpex',  icon: 'mdi:server-network', color: 'text-brand-primary', bg: 'bg-brand-surface' },
+  { key: 'infra',   icon: 'mdi:server-network', color: 'text-brand-primary', bg: 'bg-brand-surface' },
   { key: 'ssl',     icon: 'mdi:shield-lock',    color: 'text-brand-success', bg: 'bg-brand-success/10' },
   { key: 'setup',   icon: 'mdi:lightning-bolt', color: 'text-brand-orange',  bg: 'bg-brand-orange/10' },
   { key: 'support', icon: 'mdi:headset',        color: 'text-brand-purple',  bg: 'bg-brand-purple/10' },

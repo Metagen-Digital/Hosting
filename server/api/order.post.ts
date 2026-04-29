@@ -59,7 +59,7 @@ export default defineEventHandler(async (event) => {
   <tr><td style="padding:8px;border:1px solid #eee;font-weight:bold;background:#f9f9f9">Send From</td><td style="padding:8px;border:1px solid #eee;font-family:monospace">${d.sendFrom}</td></tr>
 </table>
 <p style="margin-top:16px;color:#666;font-family:sans-serif;font-size:13px">
-  ✅ <strong>Action:</strong> Verify payment → Setup on Verpex → Call ${d.phone}
+  ✅ <strong>Action:</strong> Verify payment → Setup hosting → Call ${d.phone}
 </p>`
 
     await transporter.sendMail({
@@ -81,7 +81,7 @@ export default defineEventHandler(async (event) => {
 <p><strong>Plan:</strong> ${d.plan} (${d.billing})<br/>
 <strong>Amount:</strong> ৳${d.price.toLocaleString()}<br/>
 <strong>TxID:</strong> ${d.txId}</p>
-<p>যেকোনো প্রশ্নে call করুন: <strong>01915557363</strong></p>
+<p>যেকোনো প্রশ্নে call করুন: <strong>01970-222573</strong></p>
 <p>ধন্যবাদ<br/>MetaGen Hosting Team</p>`,
     })
   }

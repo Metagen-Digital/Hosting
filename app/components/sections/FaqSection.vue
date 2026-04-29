@@ -23,7 +23,7 @@ function toggle(i: number) {
           </h2>
           <p class="text-brand-text-secondary text-lg">
             {{ t('faq.sub') }}
-            <a href="tel:+8801915557363" class="text-brand-primary font-medium hover:underline">01915557363</a>
+            <a href="tel:+8801970222573" class="text-brand-primary font-medium hover:underline">01970-222573</a>
           </p>
         </div>
 

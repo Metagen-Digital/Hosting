@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({
   title: 'Domain & Hosting Bangladesh | MetaGenDigital',
-  description: 'Professional domain registration & web hosting for Bangladesh. Verpex powered, starting from ৳৩৯৯/month. bKash, Nagad, Rocket, Upay payment accepted.',
+  description: 'Professional domain registration & web hosting for Bangladesh — starting from ৳৩৯৯/month. bKash, Nagad, Rocket, Upay payment accepted. 24h setup guarantee.',
   ogTitle: 'Domain & Hosting Bangladesh | MetaGenDigital',
   ogDescription: 'Register your domain & get fast web hosting. bKash, Nagad, Rocket payment accepted. 24h setup guarantee.',
   ogImage: '/og-hosting.png',

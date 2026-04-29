@@ -7,7 +7,7 @@
     "orderNow": "Order Now"
   },
   "hero": {
-    "badge":       "Verpex Powered Reseller",
+    "badge":       "Bangladesh's Trusted Hosting",
     "headline1":   "Find Your Perfect",
     "headline2":   "Domain",
     "headline3":   "Today",
@@ -24,14 +24,14 @@
       "secure":  "100% Secure",
       "setup":   "24h Setup",
       "support": "Local Support BD",
-      "powered": "Verpex Powered"
+      "powered": "Premium Infrastructure"
     }
   },
   "plans": {
     "badge":      "Hosting Plans",
     "heading1":   "Choose a Plan That",
     "heading2":   "Fits Your Budget",
-    "sub":        "All plans include Free SSL, Daily Backup and Verpex world-class infrastructure.",
+    "sub":        "All plans include Free SSL, Daily Backup and world-class server infrastructure.",
     "monthly":    "Monthly",
     "yearly":     "Yearly",
     "save":       "Save 20%",
@@ -83,20 +83,20 @@
       "secure":   "Secure"
     },
     "features": {
-      "verpex":   { "title": "Verpex Infrastructure",  "desc": "World-class server infrastructure with 99.9% uptime SLA guarantee." },
-      "ssl":      { "title": "Free SSL Always",         "desc": "Let's Encrypt auto-renewal — your site stays HTTPS secured at all times." },
-      "setup":    { "title": "24h Setup",               "desc": "After order confirmation, your hosting is ready in 24 hours — helpline call included." },
-      "support":  { "title": "Local Support",           "desc": "Bangladeshi local team — get help in Bangla for any issue you face." },
-      "payment":  { "title": "Mobile Payment",          "desc": "bKash, Nagad, Rocket, Upay — pay easily with any MFS." },
-      "backup":   { "title": "Daily Backup",            "desc": "Automatic daily backups — your data is always safe." }
+      "infra":    { "title": "Premium Infrastructure",  "desc": "World-class server infrastructure with 99.9% uptime SLA guarantee." },
+      "ssl":      { "title": "Free SSL Always",          "desc": "Let's Encrypt auto-renewal — your site stays HTTPS secured at all times." },
+      "setup":    { "title": "24h Setup",                "desc": "After order confirmation, your hosting is ready in 24 hours — helpline call included." },
+      "support":  { "title": "Local Support",            "desc": "Bangladeshi local team — get help in Bangla for any issue you face." },
+      "payment":  { "title": "Mobile Payment",           "desc": "bKash, Nagad, Rocket, Upay — pay easily with any MFS." },
+      "backup":   { "title": "Daily Backup",             "desc": "Automatic daily backups — your data is always safe." }
     }
   },
   "how": {
-    "badge":   "How It Works",
+    "badge":    "How It Works",
     "heading1": "Get Started in Just",
     "heading2": "4 Simple Steps",
-    "sub":     "No technical knowledge required — we set everything up for you.",
-    "cta":     "Get Started Now",
+    "sub":      "No technical knowledge required — we set everything up for you.",
+    "cta":      "Get Started Now",
     "steps": {
       "search":  { "title": "Search Domain",   "desc": "Type your desired domain name in the search box above and check availability." },
       "plan":    { "title": "Choose a Plan",   "desc": "Select Starter, Business or Enterprise based on your budget and needs." },
@@ -115,7 +115,7 @@
       },
       {
         "q": "Which payment methods are accepted?",
-        "a": "We currently accept bKash, Nagad, Rocket and Upay. Send money to personal number 01915557363 and submit the Transaction ID in the order form."
+        "a": "We currently accept bKash, Nagad, Rocket and Upay. Send money to personal number 01970-222573 and submit the Transaction ID in the order form."
       },
       {
         "q": "Can I buy hosting monthly or yearly?",
@@ -151,10 +151,11 @@
     "responseTime": "Response within 24 hours"
   },
   "footer": {
-    "tagline":     "Powered by Verpex — Professional domain & hosting for Bangladesh.",
+    "tagline":     "Professional domain & hosting solutions for Bangladesh.",
     "quickLinks":  "Quick Links",
     "support":     "Support",
     "rights":      "All rights reserved.",
+    "address":     "Kamarpara, Uttara, Dhaka, Bangladesh",
     "links": {
       "domain":  "Domain Search",
       "hosting": "Hosting Plans",
@@ -227,12 +228,12 @@
     "next":    "What Happens Next",
     "steps": [
       "We will verify your payment (usually within a few hours).",
-      "After payment confirmation, your hosting will be set up on Verpex.",
+      "After payment confirmation, your hosting will be fully set up.",
       "Once setup is complete, our helpline will call you on the number you provided.",
       "cPanel login credentials will be sent to your email."
     ],
-    "home":  "Back to Home",
-    "call":  "01915557363",
+    "home":      "Back to Home",
+    "call":      "01970-222573",
     "emailNote": "For issues, email:"
   }
 }

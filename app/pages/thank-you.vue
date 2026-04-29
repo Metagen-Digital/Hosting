@@ -3,7 +3,7 @@ useSeoMeta({ title: 'Order Received — MetaGen Hosting', robots: 'noindex' })
 
 const nextSteps = [
   'আমরা আপনার payment টি verify করব (সাধারণত কয়েক ঘণ্টার মধ্যে)।',
-  'Payment confirm হলে Verpex এ আপনার hosting setup করা হবে।',
+  'Payment confirm হলে আপনার hosting সম্পূর্ণ setup করা হবে।',
   'Setup complete হলে আমাদের helpline থেকে আপনার দেওয়া নম্বরে call করা হবে।',
   'cPanel login credentials আপনার email এ পাঠানো হবে।',
 ]
@@ -67,17 +67,17 @@ const orderId = id
           Home এ ফিরুন
         </NuxtLink>
         <a
-          href="tel:+8801915557363"
+          href="tel:+8801970222573"
           class="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-btn bg-gradient-brand text-white font-semibold hover:shadow-glow-primary hover:scale-105 transition-all duration-250"
         >
           <Icon name="mdi:phone" class="w-4 h-4" aria-hidden="true" />
-          01915557363
+          01970-222573
         </a>
       </div>
 
       <p class="text-xs text-brand-text-muted mt-6">
         কোনো সমস্যা হলে email করুন:
-        <a href="mailto:bytestacklab@gmail.com" class="text-brand-primary hover:underline">bytestacklab@gmail.com</a>
+        <a href="mailto:hello@metagendigital.com" class="text-brand-primary hover:underline">hello@metagendigital.com</a>
       </p>
     </div>
   </div>

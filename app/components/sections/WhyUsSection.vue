@@ -13,7 +13,7 @@ const featureKeys = [
 const statKeys = [
   { value: '99.9%', key: 'whyus.stats.uptime' },
   { value: '24h',   key: 'whyus.stats.setup'  },
-  { value: '৳৩৯৯', key: 'whyus.stats.from'   },
+  { value: null,    key: 'whyus.stats.from', priceKey: 'whyus.stats.price' },
   { value: '100%',  key: 'whyus.stats.secure' },
 ]
 </script>
@@ -39,7 +39,7 @@ const statKeys = [
           :key="stat.key"
           class="text-center p-6 rounded-2xl bg-white border border-brand-border shadow-card"
         >
-          <p class="font-display font-extrabold text-3xl text-brand-primary mb-1">{{ stat.value }}</p>
+          <p class="font-display font-extrabold text-3xl text-brand-primary mb-1">{{ stat.priceKey ? t(stat.priceKey) : stat.value }}</p>
           <p class="text-brand-text-muted text-sm">{{ t(stat.key) }}</p>
         </div>
       </div>

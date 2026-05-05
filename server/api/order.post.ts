@@ -1,17 +1,17 @@
 import { z } from 'zod'
 
 const schema = z.object({
-  domainName:  z.string().optional(),
-  companyName: z.string().optional(),
-  fullName:    z.string().min(2),
+  domainName:  z.string().optional().default(''),
+  companyName: z.string().optional().default(''),
+  fullName:    z.string().min(1),
   phone:       z.string().regex(/^01\d{9}$/),
   email:       z.string().email(),
-  address:     z.string().min(5),
-  plan:        z.string(),
+  address:     z.string().min(1),
+  plan:        z.string().min(1),
   billing:     z.enum(['monthly', 'yearly']),
-  price:       z.number().positive(),
+  price:       z.coerce.number().positive(),
   payMethod:   z.enum(['bkash', 'nagad', 'rocket', 'upay']),
-  txId:        z.string().min(5),
+  txId:        z.string().min(1),
   sendFrom:    z.string().regex(/^01\d{9}$/),
 })
 
@@ -26,7 +26,8 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event)
   const parsed = schema.safeParse(body)
   if (!parsed.success) {
-    throw createError({ statusCode: 400, message: 'Invalid form data' })
+    const issues = parsed.error.issues.map(i => `${i.path.join('.')}: ${i.message}`).join(', ')
+    throw createError({ statusCode: 400, message: `Validation failed — ${issues}` })
   }
 
   const d = parsed.data
@@ -84,6 +85,30 @@ export default defineEventHandler(async (event) => {
 <p>যেকোনো প্রশ্নে call করুন: <strong>01970-222573</strong></p>
 <p>ধন্যবাদ<br/>MetaGen Hosting Team</p>`,
     })
+  }
+
+  // Forward order to Laravel backend (fire-and-forget, non-blocking)
+  const backendUrl = config.backendUrl
+  if (backendUrl) {
+    $fetch(`${backendUrl}/api/hosting-orders`, {
+      method: 'POST',
+      body: {
+        order_id:    id,
+        full_name:   d.fullName,
+        email:       d.email,
+        phone:       d.phone,
+        company_name: d.companyName || null,
+        address:     d.address,
+        domain_name: d.domainName || null,
+        plan:        d.plan,
+        billing:     d.billing,
+        price:       d.price,
+        pay_method:  d.payMethod,
+        tx_id:       d.txId,
+        send_from:   d.sendFrom,
+        ordered_at:  new Date().toISOString(),
+      },
+    }).catch(() => {/* silently fail if backend unreachable */})
   }
 
   return { success: true, orderId: id }

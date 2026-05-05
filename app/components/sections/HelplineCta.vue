@@ -46,11 +46,11 @@ const localePath = useLocalePath()
           <span class="text-white font-semibold">01970-222573</span>
         </a>
         <div class="w-px h-8 bg-white/20 hidden sm:block" aria-hidden="true" />
-        <a href="mailto:hello@metagendigital.com" class="flex items-center gap-3 group">
+        <a href="mailto:hosting@metagendigital.com" class="flex items-center gap-3 group">
           <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center group-hover:bg-white/20 transition-colors">
             <Icon name="mdi:email" class="w-5 h-5 text-white" aria-hidden="true" />
           </div>
-          <span class="text-white font-semibold">hello@metagendigital.com</span>
+          <span class="text-white font-semibold">hosting@metagendigital.com</span>
         </a>
         <div class="w-px h-8 bg-white/20 hidden sm:block" aria-hidden="true" />
         <div class="flex items-center gap-3">

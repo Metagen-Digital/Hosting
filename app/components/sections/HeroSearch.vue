@@ -38,9 +38,11 @@ const domainPrice = 2000
           </span>
           {{ t('hero.headline3') }}
         </h1>
-        <p class="text-brand-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-          {{ t('hero.sub') }}
-        </p>
+        <i18n-t keypath="hero.sub" tag="p" class="text-brand-text-secondary text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
+          <template #brand>
+            <a href="https://metagendigital.com" target="_blank" rel="noopener noreferrer" class="font-bold text-brand-primary hover:underline">MetaGen Digital</a>
+          </template>
+        </i18n-t>
       </div>
 
       <!-- Search box -->

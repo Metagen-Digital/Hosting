@@ -10,50 +10,53 @@ interface PlanConfig {
   yearlyPrice: number
   featured: boolean
   badgeKey: string | null
-  features: { key: string; ok: boolean }[]
+  features: { key: string; ok: boolean; noteKey?: string }[]
 }
 
 const planConfigs: PlanConfig[] = [
   {
     id: 'starter', nameKey: 'plans.starter.name', taglineKey: 'plans.starter.tagline',
-    monthlyPrice: 399, yearlyPrice: 3990, featured: false, badgeKey: null,
+    monthlyPrice: 300, yearlyPrice: 3000, featured: false, badgeKey: null,
     features: [
-      { key: 'plans.features.ssd5',    ok: true  },
-      { key: 'plans.features.site1',   ok: true  },
-      { key: 'plans.features.email5',  ok: true  },
-      { key: 'plans.features.ssl',     ok: true  },
-      { key: 'plans.features.backupDaily', ok: true },
-      { key: 'plans.features.bw10',    ok: true  },
-      { key: 'plans.features.freeDomain', ok: false },
-      { key: 'plans.features.priority',ok: false },
+      { key: 'plans.features.ssd5',         ok: true  },
+      { key: 'plans.features.site1',         ok: true  },
+      { key: 'plans.features.email5',        ok: true  },
+      { key: 'plans.features.bwUnlimited',   ok: true  },
+      { key: 'plans.features.ssl',           ok: true  },
+      { key: 'plans.features.cpanel',        ok: true  },
+      { key: 'plans.features.backupDaily',   ok: true  },
+      { key: 'plans.features.woocommerce',   ok: true },
+      { key: 'plans.features.priority',      ok: false },
     ],
   },
   {
     id: 'business', nameKey: 'plans.business.name', taglineKey: 'plans.business.tagline',
-    monthlyPrice: 799, yearlyPrice: 7990, featured: true, badgeKey: 'plans.business.badge',
+    monthlyPrice: 450, yearlyPrice: 4500, featured: true, badgeKey: 'plans.business.badge',
     features: [
-      { key: 'plans.features.ssd20',   ok: true  },
-      { key: 'plans.features.site5',   ok: true  },
-      { key: 'plans.features.emailUnlimited', ok: true },
-      { key: 'plans.features.ssl',     ok: true  },
-      { key: 'plans.features.backupDaily', ok: true },
-      { key: 'plans.features.bwUnlimited', ok: true },
-      { key: 'plans.features.freeDomain', ok: true },
-      { key: 'plans.features.priority', ok: false },
+      { key: 'plans.features.ssd15',         ok: true },
+      { key: 'plans.features.site3',         ok: true },
+      { key: 'plans.features.email20',        ok: true },
+      { key: 'plans.features.bwUnlimited',   ok: true },
+      { key: 'plans.features.ssl',           ok: true },
+      { key: 'plans.features.cpanel',        ok: true },
+      { key: 'plans.features.backupDaily',   ok: true },
+      { key: 'plans.features.woocommerce',   ok: true },
+      { key: 'plans.features.priority',      ok: false },
     ],
   },
   {
-    id: 'enterprise', nameKey: 'plans.enterprise.name', taglineKey: 'plans.enterprise.tagline',
-    monthlyPrice: 1499, yearlyPrice: 14990, featured: false, badgeKey: null,
+    id: 'pro', nameKey: 'plans.pro.name', taglineKey: 'plans.pro.tagline',
+    monthlyPrice: 750, yearlyPrice: 6000, featured: false, badgeKey: null,
     features: [
-      { key: 'plans.features.ssd50',   ok: true },
+      { key: 'plans.features.ssd25',         ok: true },
       { key: 'plans.features.siteUnlimited', ok: true },
-      { key: 'plans.features.emailUnlimited', ok: true },
-      { key: 'plans.features.ssl',     ok: true },
-      { key: 'plans.features.backupHourly', ok: true },
-      { key: 'plans.features.bwUnlimited', ok: true },
-      { key: 'plans.features.freeDomain', ok: true },
-      { key: 'plans.features.priority', ok: true },
+      { key: 'plans.features.emailUnlimited',ok: true },
+      { key: 'plans.features.bwUnlimited',   ok: true },
+      { key: 'plans.features.ssl',           ok: true },
+      { key: 'plans.features.cpanel',        ok: true },
+      { key: 'plans.features.backupDaily',   ok: true },
+      { key: 'plans.features.woocommerce',   ok: true },
+      { key: 'plans.features.priority',      ok: true },
     ],
   },
 ]
@@ -168,10 +171,6 @@ function totalYear(plan: PlanConfig) {
         </div>
       </div>
 
-      <p class="text-center text-sm text-brand-text-muted mt-8">
-        {{ t('plans.note') }}
-        <a href="#faq" class="text-brand-primary hover:underline">{{ t('plans.learnMore') }}</a>
-      </p>
     </div>
   </section>
 </template>

@@ -11,7 +11,7 @@
     "headline1":   "Find Your Perfect",
     "headline2":   "Domain",
     "headline3":   "Today",
-    "sub":         "Professional domain & hosting — Made affordable for Bangladesh. Pay with bKash, Nagad, Rocket or Upay.",
+    "sub":         "Professional domain & hosting for Bangladesh — {brand} also manages your business website, eCommerce store, POS & business growth software.",
     "placeholder": "yourdomain.com",
     "searchBtn":   "Search",
     "selectTld":   "Select TLD",
@@ -31,10 +31,10 @@
     "badge":      "Hosting Plans",
     "heading1":   "Choose a Plan That",
     "heading2":   "Fits Your Budget",
-    "sub":        "All plans include Free SSL, Daily Backup and world-class server infrastructure.",
+    "sub":        "All plans include Free SSL, cPanel Access and Daily Backup.",
     "monthly":    "Monthly",
     "yearly":     "Yearly",
-    "save":       "Save 20%",
+    "save":       "Save 17%",
     "perMonth":   "/month",
     "yearlyBill": "Billed annually at ৳{price}",
     "monthlyBill":"Billed monthly",
@@ -43,32 +43,33 @@
     "learnMore":  "Learn more",
     "starter": {
       "name":    "Starter",
-      "tagline": "Perfect for getting started"
+      "tagline": "Portfolio, Blog & small business"
     },
     "business": {
       "name":    "Business",
       "tagline": "For growing businesses",
       "badge":   "Most Popular"
     },
-    "enterprise": {
-      "name":    "Enterprise",
-      "tagline": "For professionals"
+    "pro": {
+      "name":    "Pro",
+      "tagline": "Agency, large e-commerce & multiple sites"
     },
     "features": {
-      "ssd5":          "5 GB SSD Storage",
-      "ssd20":         "20 GB SSD Storage",
-      "ssd50":         "50 GB NVMe SSD",
+      "ssd5":          "5GB NVMe SSD Storage",
+      "ssd15":         "15GB NVMe SSD Storage",
+      "ssd25":         "25GB NVMe SSD Storage",
       "site1":         "1 Website",
-      "site5":         "5 Websites",
+      "site3":         "3 Websites",
       "siteUnlimited": "Unlimited Websites",
       "email5":        "5 Email Accounts",
+      "email20":       "20 Email Accounts",
       "emailUnlimited":"Unlimited Email Accounts",
-      "ssl":           "Free SSL Certificate",
-      "backupDaily":   "Daily Backup",
-      "backupHourly":  "Hourly Backup",
-      "bw10":          "10 GB Bandwidth",
       "bwUnlimited":   "Unlimited Bandwidth",
-      "freeDomain":    "Free Domain (1 year)",
+      "ssl":           "Free SSL Certificate",
+      "cpanel":        "cPanel Access",
+      "backupDaily":   "Daily Backup",
+      "woocommerce":   "WooCommerce / E-commerce Ready",
+      "notRecommended":"not recommended",
       "priority":      "Priority Support 24/7"
     }
   },
@@ -80,6 +81,7 @@
       "uptime":   "Uptime SLA",
       "setup":    "Setup Guarantee",
       "from":     "Starting from",
+      "price":    "৳300",
       "secure":   "Secure"
     },
     "features": {
@@ -99,9 +101,9 @@
     "cta":      "Get Started Now",
     "steps": {
       "search":  { "title": "Search Domain",   "desc": "Type your desired domain name in the search box above and check availability." },
-      "plan":    { "title": "Choose a Plan",   "desc": "Select Starter, Business or Enterprise based on your budget and needs." },
+      "plan":    { "title": "Choose a Plan",   "desc": "Select Starter, Business or Pro based on your budget and needs." },
       "pay":     { "title": "Make Payment",    "desc": "Send payment via bKash, Nagad, Rocket or Upay and submit the Transaction ID." },
-      "live":    { "title": "Go Live",         "desc": "Your hosting will be set up within 24 hours — we'll call you from the helpline." }
+      "live":    { "title": "Go Live",         "desc": "Your hosting will be set up within 24 hours — we'll call you from the helpline.", "statusNote": "Track your order status anytime via the QR code on your invoice.", "statusLink": "Check status →" }
     }
   },
   "faq": {
@@ -115,11 +117,11 @@
       },
       {
         "q": "Which payment methods are accepted?",
-        "a": "We currently accept bKash, Nagad, Rocket and Upay. Send money to personal number 01970-222573 and submit the Transaction ID in the order form."
+        "a": "We currently accept bKash, Nagad, Rocket and Upay. Send money to personal number 01915-557363 and submit the Transaction ID in the order form. For support, call 01970-222573."
       },
       {
         "q": "Can I buy hosting monthly or yearly?",
-        "a": "Both options are available. Yearly saves approximately 20% and includes a free domain for 1 year."
+        "a": "Both options are available. Yearly saves approximately 20%."
       },
       {
         "q": "Do I need technical knowledge?",
@@ -140,6 +142,10 @@
       {
         "q": "Will I get cPanel access?",
         "a": "Yes, you'll get cPanel access. We're currently in manual process mode — a WHMCS client portal will be launched in the future."
+      },
+      {
+        "q": "How can I track my order status?",
+        "a": "After placing your order, you'll receive an invoice with a QR code. Scan it or go to hosting.metagendigital.com/status to check your order status anytime."
       }
     ]
   },
@@ -148,20 +154,21 @@
     "sub":     "Your domain & hosting will be set up within 24 hours. Call us anytime.",
     "orderNow": "Order Now",
     "whatsapp": "WhatsApp Us",
-    "responseTime": "Response within 24 hours"
+    "responseTime": "Usually responds within a few hours — max 24h"
   },
   "footer": {
-    "tagline":     "Professional domain & hosting solutions for Bangladesh.",
+    "tagline":     "Domain registration, web hosting, website design & digital marketing — all under one roof. Trusted by businesses across Bangladesh with fast setup & expert local support.",
     "quickLinks":  "Quick Links",
     "support":     "Support",
     "rights":      "All rights reserved.",
-    "address":     "Kamarpara, Uttara, Dhaka, Bangladesh",
+    "address":     "Uttara 10, Dhaka, Bangladesh",
     "links": {
       "domain":  "Domain Search",
       "hosting": "Hosting Plans",
       "how":     "How It Works",
       "faq":     "FAQ",
-      "order":   "Order Now"
+      "order":   "Order Now",
+      "terms":   "Terms & Conditions"
     }
   },
   "order": {
@@ -189,7 +196,7 @@
     "submit":      "Submit Order →",
     "submitting":  "Submitting...",
     "terms":       "By submitting, you agree to our",
-    "termsLink":   "Terms",
+    "termsLink":   "Terms & Conditions",
     "errorGeneral":"Something went wrong. Try again or call us.",
     "summary":     "Order Summary",
     "plan":        "Plan",
@@ -202,6 +209,8 @@
     "includedItems": ["Free SSL Certificate", "Daily Backup", "cPanel Access", "24h Setup", "Helpline Support"],
     "help":        "Need Help?",
     "helpSub":     "Call us anytime",
+    "statusNote":  "Track your order status anytime via the QR code on your invoice.",
+    "statusLink":  "Check order status →",
     "namePlaceholder":    "Mohammad Tanvir",
     "phonePlaceholder":   "01XXXXXXXXX",
     "domainPlaceholder":  "yourdomain.com",
@@ -230,10 +239,12 @@
       "We will verify your payment (usually within a few hours).",
       "After payment confirmation, your hosting will be fully set up.",
       "Once setup is complete, our helpline will call you on the number you provided.",
-      "cPanel login credentials will be sent to your email."
+      "cPanel login credentials will be sent to your email.",
+      "Download your invoice PDF below — it includes a QR code to track your order status anytime."
     ],
-    "home":      "Back to Home",
-    "call":      "01970-222573",
-    "emailNote": "For issues, email:"
+    "home":        "Back to Home",
+    "trackStatus": "Track Order Status",
+    "call":        "01970-222573",
+    "emailNote":   "For issues, email:"
   }
 }

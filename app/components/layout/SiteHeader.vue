@@ -3,7 +3,7 @@ const { y: scrollY } = useWindowScroll()
 const isScrolled = computed(() => scrollY.value > 50)
 const mobileOpen = ref(false)
 const { t } = useI18n()
-const { toggleLocale, localeLabel } = useLocale()
+const { isEn, setLocale } = useLocale()
 const localePath = useLocalePath()
 
 const navLinks = computed(() => [
@@ -23,11 +23,13 @@ const navLinks = computed(() => [
   >
     <div class="container-content flex items-center justify-between h-16 md:h-20">
       <!-- Logo -->
-      <NuxtLink :to="localePath('/')" class="flex items-center gap-2 flex-shrink-0" aria-label="MetaGenDigital Hosting home">
-        <span class="font-display font-extrabold text-xl text-brand-primary">
-          Meta<span class="text-gradient-orange">Gen</span>
-          <span class="ml-1 text-sm font-semibold text-brand-text-secondary">Hosting</span>
-        </span>
+      <NuxtLink :to="localePath('/')" class="flex items-center flex-shrink-0" aria-label="MetaGenDigital Hosting home">
+        <NuxtImg
+          src="/images/logo/logo-light.png"
+          alt="MetaGenDigital"
+          class="h-9 md:h-10 w-auto object-contain"
+          loading="eager"
+        />
       </NuxtLink>
 
       <!-- Desktop nav -->
@@ -36,7 +38,7 @@ const navLinks = computed(() => [
           v-for="link in navLinks"
           :key="link.href"
           :href="link.href"
-          class="px-3 py-2 text-sm font-medium text-brand-text-secondary hover:text-brand-primary transition-colors duration-150 rounded-md hover:bg-brand-surface"
+          class="px-3 py-2 text-sm font-semibold text-brand-text-secondary hover:text-brand-primary transition-colors duration-150 rounded-md hover:bg-brand-surface"
         >
           {{ t(link.labelKey) }}
         </a>
@@ -45,14 +47,21 @@ const navLinks = computed(() => [
       <!-- Right side: lang toggle + CTA -->
       <div class="hidden md:flex items-center gap-2">
         <!-- Language toggle -->
-        <button
-          class="inline-flex items-center gap-1.5 px-3 py-2 rounded-lg border border-brand-border text-sm font-semibold text-brand-primary hover:bg-brand-surface hover:border-brand-border-strong transition-all duration-150"
-          :aria-label="`Switch to ${localeLabel}`"
-          @click="toggleLocale"
-        >
-          <Icon name="mdi:translate" class="w-4 h-4" aria-hidden="true" />
-          {{ localeLabel }}
-        </button>
+        <div class="inline-flex items-center rounded-md border border-brand-border overflow-hidden text-xs font-semibold" role="group" aria-label="Language selector">
+          <button
+            class="px-2 py-1 transition-all duration-150"
+            :class="isEn ? 'bg-brand-primary text-white' : 'text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface'"
+            aria-label="English"
+            @click="setLocale('en')"
+          >EN</button>
+          <div class="w-px self-stretch bg-brand-border" />
+          <button
+            class="px-2 py-1 transition-all duration-150"
+            :class="!isEn ? 'bg-brand-primary text-white' : 'text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface'"
+            aria-label="বাংলা"
+            @click="setLocale('bn')"
+          >বাং</button>
+        </div>
 
         <!-- Order CTA -->
         <NuxtLink
@@ -66,13 +75,21 @@ const navLinks = computed(() => [
 
       <!-- Mobile right: lang + hamburger -->
       <div class="md:hidden flex items-center gap-2">
-        <button
-          class="p-2 rounded-lg border border-brand-border text-sm font-bold text-brand-primary hover:bg-brand-surface transition-colors"
-          :aria-label="`Switch to ${localeLabel}`"
-          @click="toggleLocale"
-        >
-          {{ localeLabel }}
-        </button>
+        <div class="inline-flex items-center rounded-md border border-brand-border overflow-hidden text-xs font-bold" role="group" aria-label="Language selector">
+          <button
+            class="px-2 py-1 transition-all duration-150"
+            :class="isEn ? 'bg-brand-primary text-white' : 'text-brand-text-secondary'"
+            aria-label="English"
+            @click="setLocale('en')"
+          >EN</button>
+          <div class="w-px self-stretch bg-brand-border" />
+          <button
+            class="px-2 py-1 transition-all duration-150"
+            :class="!isEn ? 'bg-brand-primary text-white' : 'text-brand-text-secondary'"
+            aria-label="বাংলা"
+            @click="setLocale('bn')"
+          >বাং</button>
+        </div>
         <button
           class="p-2 rounded-md text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface transition-colors"
           :aria-expanded="mobileOpen"
@@ -84,44 +101,86 @@ const navLinks = computed(() => [
       </div>
     </div>
 
-    <!-- Mobile menu -->
-    <Transition name="mobile-menu">
-      <div
-        v-if="mobileOpen"
-        class="md:hidden border-t border-brand-border bg-white px-4 py-4 space-y-1"
-      >
+  </header>
+
+  <!-- Mobile drawer overlay -->
+  <Transition name="overlay">
+    <div
+      v-if="mobileOpen"
+      class="md:hidden fixed inset-0 z-[98] bg-black/40 backdrop-blur-sm"
+      @click="mobileOpen = false"
+    />
+  </Transition>
+
+  <!-- Mobile drawer panel -->
+  <Transition name="drawer">
+    <div
+      v-if="mobileOpen"
+      class="md:hidden fixed top-0 left-0 z-[99] h-full w-72 bg-white shadow-2xl flex flex-col"
+    >
+      <!-- Drawer header -->
+      <div class="flex items-center justify-between px-5 h-16 border-b border-brand-border flex-shrink-0">
+        <NuxtImg
+          src="/images/logo/logo-light.png"
+          alt="MetaGenDigital"
+          class="h-8 w-auto object-contain"
+        />
+        <button
+          class="p-1.5 rounded-md text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface transition-colors"
+          aria-label="Close menu"
+          @click="mobileOpen = false"
+        >
+          <Icon name="mdi:close" class="w-5 h-5" />
+        </button>
+      </div>
+
+      <!-- Nav links -->
+      <nav class="flex-1 overflow-y-auto px-4 py-5 space-y-1">
         <a
           v-for="link in navLinks"
           :key="link.href"
           :href="link.href"
-          class="block px-3 py-2.5 rounded-md text-sm font-medium text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface transition-colors"
+          class="flex items-center gap-3 px-3 py-3 rounded-md text-sm font-semibold text-brand-text-secondary hover:text-brand-primary hover:bg-brand-surface transition-colors"
           @click="mobileOpen = false"
         >
           {{ t(link.labelKey) }}
         </a>
+      </nav>
+
+      <!-- CTA -->
+      <div class="px-4 py-5 border-t border-brand-border flex-shrink-0">
         <NuxtLink
           :to="localePath('/order')"
-          class="block mt-2 text-center px-5 py-3 rounded-btn text-sm font-semibold text-white bg-gradient-brand"
+          class="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-btn text-sm font-semibold text-white bg-gradient-brand hover:shadow-glow-primary transition-all duration-250"
           @click="mobileOpen = false"
         >
-          {{ t('nav.orderNow') }} →
+          <Icon name="mdi:rocket-launch" class="w-4 h-4" />
+          {{ t('nav.orderNow') }}
         </NuxtLink>
       </div>
-    </Transition>
-  </header>
+    </div>
+  </Transition>
 
   <!-- Spacer -->
   <div class="h-16 md:h-20" aria-hidden="true" />
 </template>
 
 <style scoped>
-.mobile-menu-enter-active,
-.mobile-menu-leave-active {
-  transition: opacity 150ms ease, transform 200ms ease;
+.drawer-enter-active,
+.drawer-leave-active {
+  transition: transform 280ms cubic-bezier(0.4, 0, 0.2, 1);
 }
-.mobile-menu-enter-from,
-.mobile-menu-leave-to {
+.drawer-enter-from,
+.drawer-leave-to {
+  transform: translateX(-100%);
+}
+
+.overlay-enter-active,
+.overlay-leave-active {
+  transition: opacity 250ms ease;
+}
+.overlay-enter-from,
+.overlay-leave-to {
   opacity: 0;
-  transform: translateY(-8px);
 }
 </style>

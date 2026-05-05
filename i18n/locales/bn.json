@@ -11,7 +11,7 @@
     "headline1":   "আপনার স্বপ্নের",
     "headline2":   "ডোমেইন",
     "headline3":   "খুঁজুন",
-    "sub":         "পেশাদার ডোমেইন ও হোস্টিং — বাংলাদেশের জন্য সাশ্রয়ী দামে। বিকাশ, নগদ, রকেট বা উপায়ে payment করুন।",
+    "sub":         "বাংলাদেশের জন্য পেশাদার ডোমেইন ও হোস্টিং — {brand} আপনার ব্যবসার ওয়েবসাইট, ই-কমার্স স্টোর, POS ও বিজনেস গ্রোথ সফটওয়্যারও পরিচালনা করে।",
     "placeholder": "আপনার ডোমেইন লিখুন...",
     "searchBtn":   "খুঁজুন",
     "selectTld":   "TLD বেছে নিন",
@@ -31,10 +31,10 @@
     "badge":      "হোস্টিং প্যাকেজ",
     "heading1":   "আপনার বাজেট অনুযায়ী",
     "heading2":   "প্যাকেজ বেছে নিন",
-    "sub":        "সব প্যাকেজে আছে ফ্রি SSL, ডেইলি ব্যাকআপ এবং বিশ্বমানের সার্ভার অবকাঠামো।",
+    "sub":        "সব প্যাকেজে আছে ফ্রি SSL, cPanel Access এবং ডেইলি ব্যাকআপ।",
     "monthly":    "মাসিক",
     "yearly":     "বার্ষিক",
-    "save":       "২০% সাশ্রয়",
+    "save":       "১৭% সাশ্রয়",
     "perMonth":   "/মাস",
     "yearlyBill": "বার্ষিক ৳{price} একসাথে payment",
     "monthlyBill": "প্রতি মাসে payment",
@@ -43,32 +43,33 @@
     "learnMore":  "আরো জানুন",
     "starter": {
       "name":    "স্টার্টার",
-      "tagline": "শুরু করার জন্য পারফেক্ট"
+      "tagline": "Portfolio, Blog ও ছোট ব্যবসার সাইট"
     },
     "business": {
       "name":    "বিজনেস",
       "tagline": "Growing business এর জন্য",
       "badge":   "সবচেয়ে জনপ্রিয়"
     },
-    "enterprise": {
-      "name":    "এন্টারপ্রাইজ",
-      "tagline": "প্রফেশনালদের জন্য"
+    "pro": {
+      "name":    "প্রো",
+      "tagline": "Agency, বড় E-commerce ও multiple site"
     },
     "features": {
-      "ssd5":          "৫ জিবি SSD স্টোরেজ",
-      "ssd20":         "২০ জিবি SSD স্টোরেজ",
-      "ssd50":         "৫০ জিবি NVMe SSD",
+      "ssd5":          "৫ জিবি NVMe SSD স্টোরেজ",
+      "ssd15":         "১৫ জিবি NVMe SSD স্টোরেজ",
+      "ssd25":         "২৫ জিবি NVMe SSD স্টোরেজ",
       "site1":         "১টি ওয়েবসাইট",
-      "site5":         "৫টি ওয়েবসাইট",
+      "site3":         "৩টি ওয়েবসাইট",
       "siteUnlimited": "সীমাহীন ওয়েবসাইট",
       "email5":        "৫টি ইমেইল অ্যাকাউন্ট",
+      "email20":       "২০টি ইমেইল অ্যাকাউন্ট",
       "emailUnlimited":"সীমাহীন ইমেইল অ্যাকাউন্ট",
-      "ssl":           "ফ্রি SSL সার্টিফিকেট",
-      "backupDaily":   "ডেইলি ব্যাকআপ",
-      "backupHourly":  "প্রতি ঘণ্টায় ব্যাকআপ",
-      "bw10":          "১০ জিবি ব্যান্ডউইথ",
       "bwUnlimited":   "সীমাহীন ব্যান্ডউইথ",
-      "freeDomain":    "ফ্রি ডোমেইন (১ বছর)",
+      "ssl":           "ফ্রি SSL সার্টিফিকেট",
+      "cpanel":        "cPanel Access",
+      "backupDaily":   "ডেইলি ব্যাকআপ",
+      "woocommerce":   "WooCommerce / E-commerce Ready",
+      "notRecommended":"প্রস্তাবিত নয়",
       "priority":      "প্রায়রিটি সাপোর্ট ২৪/৭"
     }
   },
@@ -80,6 +81,7 @@
       "uptime":  "আপটাইম SLA",
       "setup":   "সেটআপ গ্যারান্টি",
       "from":    "থেকে শুরু",
+      "price":   "৳৩০০",
       "secure":  "নিরাপদ"
     },
     "features": {
@@ -99,9 +101,9 @@
     "cta":      "এখনই শুরু করুন",
     "steps": {
       "search": { "title": "ডোমেইন খুঁজুন",     "desc": "উপরের search box এ আপনার পছন্দের domain লিখুন এবং availability check করুন।" },
-      "plan":   { "title": "প্যাকেজ বেছে নিন",  "desc": "আপনার budget ও প্রয়োজন অনুযায়ী Starter, Business বা Enterprise বেছে নিন।" },
+      "plan":   { "title": "প্যাকেজ বেছে নিন",  "desc": "আপনার budget ও প্রয়োজন অনুযায়ী Starter, Business বা Pro বেছে নিন।" },
       "pay":    { "title": "পেমেন্ট করুন",       "desc": "বিকাশ, নগদ, রকেট বা উপায়ে payment করুন এবং Transaction ID জমা দিন।" },
-      "live":   { "title": "সাইট চালু করুন",    "desc": "২৪ ঘণ্টার মধ্যে হোস্টিং সেটআপ হবে — helpline থেকে আপনাকে call করা হবে।" }
+      "live":   { "title": "সাইট চালু করুন",    "desc": "২৪ ঘণ্টার মধ্যে হোস্টিং সেটআপ হবে — helpline থেকে আপনাকে call করা হবে।", "statusNote": "ইনভয়েসের QR কোড থেকে যেকোনো সময় অর্ডার স্ট্যাটাস দেখুন।", "statusLink": "স্ট্যাটাস দেখুন →" }
     }
   },
   "faq": {
@@ -115,11 +117,11 @@
       },
       {
         "q": "কোন payment method accept করা হয়?",
-        "a": "বর্তমানে বিকাশ, নগদ, রকেট এবং উপায়ে payment গ্রহণ করা হয়। Personal number 01970-222573 এ Send Money করতে হবে এবং Transaction ID form এ submit করতে হবে।"
+        "a": "বর্তমানে বিকাশ, নগদ, রকেট এবং উপায়ে payment গ্রহণ করা হয়। Personal number 01915-557363 এ Send Money করতে হবে এবং Transaction ID form এ submit করতে হবে। সাপোর্টের জন্য call করুন 01970-222573।"
       },
       {
         "q": "কতদিনের জন্য hosting কিনতে পারব?",
-        "a": "Monthly বা Yearly দুইভাবেই নিতে পারবেন। Yearly নিলে প্রায় ২০% সাশ্রয় হয় এবং ১ বছরের জন্য Free Domain পাবেন।"
+        "a": "Monthly বা Yearly দুইভাবেই নিতে পারবেন। Yearly নিলে প্রায় ২০% সাশ্রয় হয়।"
       },
       {
         "q": "আমার কি technical জ্ঞান দরকার?",
@@ -140,6 +142,10 @@
       {
         "q": "cPanel access পাব?",
         "a": "হ্যাঁ, cPanel access পাবেন। এখন manual process এ কাজ করছি — ভবিষ্যতে WHMCS client portal চালু হবে।"
+      },
+      {
+        "q": "অর্ডার স্ট্যাটাস কিভাবে দেখব?",
+        "a": "অর্ডার দেওয়ার পর আপনি একটি invoice পাবেন যেখানে QR কোড থাকবে। সেটি scan করুন অথবা hosting.metagendigital.com/status এ গিয়ে যেকোনো সময় অর্ডারের অবস্থা দেখুন।"
       }
     ]
   },
@@ -148,20 +154,21 @@
     "sub":     "২৪ ঘণ্টার মধ্যে আপনার domain ও hosting setup করে দেব। যেকোনো প্রশ্নে call করুন।",
     "orderNow": "অর্ডার করুন",
     "whatsapp": "WhatsApp করুন",
-    "responseTime": "২৪ ঘণ্টার মধ্যে response"
+    "responseTime": "সাধারণত কয়েক ঘণ্টার মধ্যে — সর্বোচ্চ ২৪ ঘণ্টা"
   },
   "footer": {
-    "tagline":    "বাংলাদেশের জন্য পেশাদার ডোমেইন ও হোস্টিং সেবা।",
+    "tagline":    "ডোমেইন রেজিস্ট্রেশন, ওয়েব হোস্টিং, ওয়েবসাইট ডিজাইন ও ডিজিটাল মার্কেটিং — সব এক ছাদের নিচে। দ্রুত সেটআপ ও বিশেষজ্ঞ লোকাল সাপোর্টে বাংলাদেশের ব্যবসাগুলোকে এগিয়ে নিচ্ছি।",
     "quickLinks": "দ্রুত লিংক",
     "support":    "সাপোর্ট",
     "rights":     "সকল অধিকার সংরক্ষিত।",
-    "address":    "কামারপাড়া, উত্তরা, ঢাকা, বাংলাদেশ",
+    "address":    "উত্তরা ১০, ঢাকা, বাংলাদেশ",
     "links": {
       "domain":  "ডোমেইন সার্চ",
       "hosting": "হোস্টিং প্যাকেজ",
       "how":     "কীভাবে কাজ করে",
       "faq":     "প্রশ্নোত্তর",
-      "order":   "অর্ডার করুন"
+      "order":   "অর্ডার করুন",
+      "terms":   "শর্তাবলী ও নীতিমালা"
     }
   },
   "order": {
@@ -189,7 +196,7 @@
     "submit":      "অর্ডার Submit করুন →",
     "submitting":  "পাঠানো হচ্ছে...",
     "terms":       "Submit করলে আমাদের",
-    "termsLink":   "শর্তাবলী",
+    "termsLink":   "শর্তাবলী ও নীতিমালা",
     "errorGeneral":"কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন বা call করুন।",
     "summary":     "অর্ডার সারসংক্ষেপ",
     "plan":        "প্যাকেজ",
@@ -202,6 +209,8 @@
     "includedItems": ["ফ্রি SSL সার্টিফিকেট", "ডেইলি ব্যাকআপ", "cPanel অ্যাক্সেস", "২৪ঘণ্টায় সেটআপ", "হেল্পলাইন সাপোর্ট"],
     "help":        "সাহায্য দরকার?",
     "helpSub":     "যেকোনো প্রশ্নে call করুন",
+    "statusNote":  "ইনভয়েসের QR কোড থেকে যেকোনো সময় অর্ডার স্ট্যাটাস দেখুন।",
+    "statusLink":  "অর্ডার স্ট্যাটাস দেখুন →",
     "namePlaceholder":    "মোহাম্মদ তানভীর",
     "phonePlaceholder":   "০১XXXXXXXXX",
     "domainPlaceholder":  "yourdomain.com",
@@ -230,10 +239,12 @@
       "আমরা আপনার payment টি verify করব (সাধারণত কয়েক ঘণ্টার মধ্যে)।",
       "Payment confirm হলে আপনার hosting সম্পূর্ণ setup করা হবে।",
       "Setup complete হলে helpline থেকে আপনার দেওয়া নম্বরে call করা হবে।",
-      "cPanel login credentials আপনার email এ পাঠানো হবে।"
+      "cPanel login credentials আপনার email এ পাঠানো হবে।",
+      "নিচের বাটন থেকে invoice PDF download করুন — এতে QR কোড আছে, যা দিয়ে যেকোনো সময় অর্ডার স্ট্যাটাস দেখতে পারবেন।"
     ],
-    "home":      "Home এ ফিরুন",
-    "call":      "01970-222573",
-    "emailNote": "সমস্যার জন্য email করুন:"
+    "home":        "Home এ ফিরুন",
+    "trackStatus": "অর্ডার স্ট্যাটাস দেখুন",
+    "call":        "01970-222573",
+    "emailNote":   "সমস্যার জন্য email করুন:"
   }
 }

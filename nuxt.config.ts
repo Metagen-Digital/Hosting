@@ -38,7 +38,11 @@ export default defineNuxtConfig({
       ],
       title: 'Domain & Hosting Bangladesh | MetaGenDigital',
       link: [
-        { rel: 'icon', type: 'image/svg+xml', href: '/favicon.svg' },
+        { rel: 'icon', type: 'image/x-icon', href: '/favicon/favicon.ico' },
+        { rel: 'icon', type: 'image/png', sizes: '32x32', href: '/favicon/favicon-32x32.png' },
+        { rel: 'icon', type: 'image/png', sizes: '16x16', href: '/favicon/favicon-16x16.png' },
+        { rel: 'apple-touch-icon', sizes: '180x180', href: '/favicon/apple-touch-icon.png' },
+        { rel: 'manifest', href: '/favicon/site.webmanifest' },
       ],
     },
   },
@@ -49,12 +53,13 @@ export default defineNuxtConfig({
   },
 
   runtimeConfig: {
-    smtpHost: process.env.SMTP_HOST || '',
-    smtpPort: process.env.SMTP_PORT || '587',
-    smtpUser: process.env.SMTP_USER || '',
-    smtpPass: process.env.SMTP_PASS || '',
+    smtpHost:   process.env.SMTP_HOST || '',
+    smtpPort:   process.env.SMTP_PORT || '587',
+    smtpUser:   process.env.SMTP_USER || '',
+    smtpPass:   process.env.SMTP_PASS || '',
     adminEmail: process.env.ADMIN_EMAIL || 'hello@metagendigital.com',
     whoisApiKey: process.env.WHOIS_API_KEY || '',
+    backendUrl: process.env.BACKEND_URL || 'http://127.0.0.1:8000',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',
     },

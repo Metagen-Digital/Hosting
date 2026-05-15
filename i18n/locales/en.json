@@ -20,6 +20,9 @@
     "searchAgain": "Search again",
     "perYear":     "/year",
     "register":    "Register →",
+    "premiumUnavailable": "Premium domain — not available for registration",
+    "tryAlternatives": "Try these available alternatives:",
+    "checkingAlts": "Checking alternatives...",
     "proof": {
       "secure":  "100% Secure",
       "setup":   "24h Setup",
@@ -154,7 +157,7 @@
     "sub":     "Your domain & hosting will be set up within 24 hours. Call us anytime.",
     "orderNow": "Order Now",
     "whatsapp": "WhatsApp Us",
-    "responseTime": "Usually responds within a few hours — max 24h"
+    "responseTime": "Response time: a few hours to 24h"
   },
   "footer": {
     "tagline":     "Domain registration, web hosting, website design & digital marketing — all under one roof. Trusted by businesses across Bangladesh with fast setup & expert local support.",

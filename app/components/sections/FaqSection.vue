@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, tm, rt } = useI18n()
+const { t, tm, rt } = useI18n({ useScope: 'global' })
 const openIndex = ref<number | null>(null)
 
 const faqs = computed(() => {

@@ -1,12 +1,10 @@
 <script setup lang="ts">
-const { t } = useI18n()
-const { query, status, checkedDomain, tlds, selectedTld, fullDomain, isValidDomain, checkDomain, reset } = useDomainSearch()
+const { t } = useI18n({ useScope: 'global' })
+const { query, status, checkedDomain, tlds, selectedTld, fullDomain, isValidDomain, domainPrice, alternatives, loadingAlternatives, checkDomain, reset } = useDomainSearch()
 
 function onKeydown(e: KeyboardEvent) {
   if (e.key === 'Enter') checkDomain()
 }
-
-const domainPrice = 2000
 </script>
 
 <template>
@@ -137,11 +135,58 @@ const domainPrice = 2000
             </button>
           </div>
 
+          <div v-else-if="status === 'premium'" class="mt-4 p-4 rounded-xl bg-white border-2 border-brand-warning/40 shadow-card flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full bg-brand-warning/10 flex items-center justify-center flex-shrink-0">
+              <Icon name="mdi:star-off" class="w-5 h-5 text-brand-warning" aria-hidden="true" />
+            </div>
+            <div class="flex-1">
+              <p class="font-semibold text-brand-primary text-sm">{{ checkedDomain }}</p>
+              <p class="text-brand-warning text-xs font-medium">{{ t('hero.premiumUnavailable') }}</p>
+            </div>
+            <button class="text-xs text-brand-text-muted hover:text-brand-primary transition-colors" @click="reset">
+              {{ t('hero.searchAgain') }}
+            </button>
+          </div>
+
           <div v-else-if="status === 'error'" class="mt-4 p-4 rounded-xl bg-brand-warning/10 border border-brand-warning/30 text-brand-warning text-sm font-medium flex items-center gap-2">
             <Icon name="mdi:alert-circle" class="w-4 h-4 flex-shrink-0" aria-hidden="true" />
             {{ t('hero.taken') }}
           </div>
         </Transition>
+
+        <!-- Alternatives -->
+        <div v-if="status === 'taken'" class="mt-3">
+          <div v-if="loadingAlternatives" class="flex items-center gap-2 text-brand-text-muted text-xs py-2">
+            <svg class="w-3.5 h-3.5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
+            </svg>
+            {{ t('hero.checkingAlts') }}
+          </div>
+          <div v-else-if="alternatives.length" class="space-y-2">
+            <p class="text-brand-text-muted text-xs font-medium mb-2">{{ t('hero.tryAlternatives') }}</p>
+            <div
+              v-for="alt in alternatives"
+              :key="alt.domain"
+              class="flex items-center justify-between gap-3 p-3 rounded-xl bg-white border border-brand-border hover:border-brand-primary transition-all duration-150"
+            >
+              <div class="flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-brand-success flex-shrink-0" />
+                <span class="font-medium text-brand-primary text-sm">{{ alt.domain }}</span>
+              </div>
+              <div class="flex items-center gap-3 flex-shrink-0">
+                <span class="text-brand-text-secondary text-sm font-semibold">৳{{ alt.price.toLocaleString() }}/yr</span>
+                <NuxtLink
+                  :to="`/order?domain=${alt.domain}&type=domain`"
+                  class="px-3 py-1.5 rounded-lg bg-gradient-brand text-white text-xs font-semibold hover:shadow-glow-primary transition-all duration-150"
+                >
+                  {{ t('hero.register') }}
+                </NuxtLink>
+              </div>
+            </div>
+          </div>
+        </div>
+
       </div>
 
       <!-- Social proof -->

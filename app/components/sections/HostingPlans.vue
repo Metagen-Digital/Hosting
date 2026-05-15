@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n({ useScope: 'global' })
 const billing = ref<'monthly' | 'yearly'>('yearly')
 
 interface PlanConfig {

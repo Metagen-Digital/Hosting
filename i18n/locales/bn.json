@@ -20,6 +20,9 @@
     "searchAgain": "আবার খুঁজুন",
     "perYear":     "/বছর",
     "register":    "রেজিস্টার করুন →",
+    "premiumUnavailable": "প্রিমিয়াম ডোমেইন — রেজিস্ট্রেশনের জন্য পাওয়া যাচ্ছে না",
+    "tryAlternatives": "এই alternatives গুলো available:",
+    "checkingAlts": "Alternatives চেক করা হচ্ছে...",
     "proof": {
       "secure":  "১০০% নিরাপদ",
       "setup":   "২৪ ঘণ্টায় Setup",

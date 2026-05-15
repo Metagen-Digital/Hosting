@@ -2,7 +2,7 @@
 const { y: scrollY } = useWindowScroll()
 const isScrolled = computed(() => scrollY.value > 50)
 const mobileOpen = ref(false)
-const { t } = useI18n()
+const { t } = useI18n({ useScope: 'global' })
 const { isEn, setLocale } = useLocale()
 const localePath = useLocalePath()
 

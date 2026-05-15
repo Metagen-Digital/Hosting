@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t, locale } = useI18n({ useScope: 'global' })
 
 useSeoMeta({
   title: () => locale.value === 'bn' ? 'শর্তাবলী — MetaGen Hosting' : 'Terms & Conditions — MetaGen Hosting',

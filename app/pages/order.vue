@@ -1,7 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({ title: 'Order — MetaGen Hosting', robots: 'noindex' })
 
-const { t, tm, rt } = useI18n()
+const { t, tm, rt } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()
 const route = useRoute()
 const router = useRouter()

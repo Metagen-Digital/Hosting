@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const { t } = useI18n()
+const { t } = useI18n({ useScope: 'global' })
 
 const featureKeys = [
   { key: 'infra',   icon: 'mdi:server-network', color: 'text-brand-primary', bg: 'bg-brand-surface' },

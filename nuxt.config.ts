@@ -62,6 +62,7 @@ export default defineNuxtConfig({
     backendUrl: process.env.BACKEND_URL || 'http://127.0.0.1:8000',
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',
+      backendUrl: process.env.BACKEND_URL || 'http://127.0.0.1:8000',
     },
   },
 

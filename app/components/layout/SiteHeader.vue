@@ -44,7 +44,7 @@ const navLinks = computed(() => [
         </a>
       </nav>
 
-      <!-- Right side: lang toggle + CTA -->
+      <!-- Right side: lang toggle + UserMenu + CTA -->
       <div class="hidden md:flex items-center gap-2">
         <!-- Language toggle -->
         <div class="inline-flex items-center rounded-md border border-brand-border overflow-hidden text-xs font-semibold" role="group" aria-label="Language selector">
@@ -71,6 +71,9 @@ const navLinks = computed(() => [
           <Icon name="mdi:rocket-launch" class="w-4 h-4" aria-hidden="true" />
           {{ t('nav.orderNow') }}
         </NuxtLink>
+
+        <!-- User Menu -->
+        <UserMenu />
       </div>
 
       <!-- Mobile right: lang + hamburger -->
@@ -148,7 +151,7 @@ const navLinks = computed(() => [
       </nav>
 
       <!-- CTA -->
-      <div class="px-4 py-5 border-t border-brand-border flex-shrink-0">
+      <div class="px-4 py-5 border-t border-brand-border flex-shrink-0 space-y-3">
         <NuxtLink
           :to="localePath('/order')"
           class="flex items-center justify-center gap-2 w-full px-5 py-3 rounded-btn text-sm font-semibold text-white bg-gradient-brand hover:shadow-glow-primary transition-all duration-250"
@@ -157,6 +160,9 @@ const navLinks = computed(() => [
           <Icon name="mdi:rocket-launch" class="w-4 h-4" />
           {{ t('nav.orderNow') }}
         </NuxtLink>
+        <div @click="mobileOpen = false">
+          <UserMenu />
+        </div>
       </div>
     </div>
   </Transition>

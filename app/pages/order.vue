@@ -1,6 +1,7 @@
 <script setup lang="ts">
 useSeoMeta({ title: 'Order — MetaGen Hosting', robots: 'noindex' })
 
+const { user, isLoggedIn } = useAuth()
 const { t, tm, rt } = useI18n({ useScope: 'global' })
 const localePath = useLocalePath()
 const route = useRoute()
@@ -54,6 +55,14 @@ const payMethods = [
 
 const adminPhone = '01915557363'
 
+// Auto-fill from logged-in user — still editable
+watch(user, (u) => {
+  if (!u) return
+  if (!form.fullName) form.fullName = u.name
+  if (!form.email)    form.email    = u.email
+  if (!form.phone)    form.phone    = u.phone || ''
+}, { immediate: true })
+
 /* ── Validation ── */
 const errors = reactive<Record<string, string>>({})
 
@@ -86,6 +95,7 @@ async function submit() {
         price: price.value,
       },
     })
+    const orderedAt = new Date().toISOString()
     orderStore.value = {
       orderId:     result.orderId,
       fullName:    form.fullName,
@@ -100,8 +110,21 @@ async function submit() {
       payMethod:   form.payMethod,
       txId:        form.txId,
       sendFrom:    form.sendFrom,
-      orderedAt:   new Date().toISOString(),
+      orderedAt,
     }
+    // Save to localStorage so dashboard can show order history
+    try {
+      const existing = JSON.parse(localStorage.getItem('mgd_orders') || '[]')
+      existing.unshift({
+        orderId:   result.orderId,
+        plan:      plans[selectedPlan.value].name,
+        domain:    form.domainName,
+        price:     price.value,
+        payMethod: form.payMethod,
+        orderedAt,
+      })
+      localStorage.setItem('mgd_orders', JSON.stringify(existing))
+    } catch {}
     router.push(localePath('/thank-you'))
   } catch (err: any) {
     errors.submit = err?.data?.message || err?.message || t('order.errorGeneral')
@@ -166,6 +189,10 @@ async function submit() {
             <Icon name="mdi:account" class="w-4 h-4 text-brand-text-muted" aria-hidden="true" />
             {{ t('order.details') }}
           </h2>
+          <div v-if="isLoggedIn" class="mb-4 flex items-center gap-2 px-3 py-2 rounded-lg bg-blue-50 border border-blue-200 text-xs text-blue-700">
+            <Icon name="mdi:account-check" class="w-4 h-4 shrink-0" />
+            Filled from your account — you can still edit any field below.
+          </div>
           <div class="grid sm:grid-cols-2 gap-4 mb-6">
             <div>
               <label class="block text-xs font-medium text-brand-text-secondary mb-1.5">{{ t('order.domain') }}</label>

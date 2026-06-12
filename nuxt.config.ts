@@ -63,6 +63,8 @@ export default defineNuxtConfig({
     public: {
       siteUrl: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',
       backendUrl: process.env.BACKEND_URL || 'http://127.0.0.1:8000',
+      apiBase: (process.env.BACKEND_URL || 'http://127.0.0.1:8000') + '/api',
+      cookieDomain: process.env.COOKIE_DOMAIN || '',
     },
   },
 
@@ -85,5 +87,10 @@ export default defineNuxtConfig({
 
   icon: {
     serverBundle: 'remote',
+  },
+
+  routeRules: {
+    '/dashboard':    { ssr: false },
+    '/bn/dashboard': { ssr: false },
   },
 })

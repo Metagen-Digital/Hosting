@@ -10,6 +10,7 @@ interface OrderStatus {
   domain: string | null
   plan: string
   billing: string
+  price: number | null
   status: 'pending' | 'verified' | 'active' | 'expired' | 'cancelled'
   ordered_at: string | null
   activated_at: string | null

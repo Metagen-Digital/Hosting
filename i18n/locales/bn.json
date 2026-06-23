@@ -2,60 +2,60 @@
   "nav": {
     "domain":  "ডোমেইন",
     "hosting": "হোস্টিং",
-    "faq":     "প্রশ্নোত্তর",
+    "faq":     "FAQ",
     "contact": "যোগাযোগ",
     "orderNow": "অর্ডার করুন"
   },
   "hero": {
-    "badge":       "বাংলাদেশের বিশ্বস্ত হোস্টিং",
-    "headline1":   "আপনার স্বপ্নের",
+    "badge":       "বাংলাদেশের ভরসার হোস্টিং",
+    "headline1":   "আপনার পছন্দের",
     "headline2":   "ডোমেইন",
-    "headline3":   "খুঁজুন",
-    "sub":         "বাংলাদেশের জন্য পেশাদার ডোমেইন ও হোস্টিং — {brand} আপনার ব্যবসার ওয়েবসাইট, ই-কমার্স স্টোর, POS ও বিজনেস গ্রোথ সফটওয়্যারও পরিচালনা করে।",
-    "placeholder": "আপনার ডোমেইন লিখুন...",
+    "headline3":   "খুঁজে নিন",
+    "sub":         "বাংলাদেশের জন্য প্রফেশনাল ডোমেইন ও হোস্টিং — পাশাপাশি {brand} আপনার বিজনেস ওয়েবসাইট, ই-কমার্স স্টোর, POS ও বিজনেস সফটওয়্যারও ম্যানেজ করে।",
+    "placeholder": "আপনার পছন্দের ডোমেইন লিখুন...",
     "searchBtn":   "খুঁজুন",
     "selectTld":   "TLD বেছে নিন",
-    "available":   "পাওয়া যাচ্ছে! ✓",
-    "taken":       "নেওয়া হয়ে গেছে — নিচের alternatives try করুন",
+    "available":   "Available! ✓",
+    "taken":       "Sorry! এটা আগেই নেওয়া হয়ে গেছে — নিচের গুলো দেখুন",
     "searchAgain": "আবার খুঁজুন",
     "perYear":     "/বছর",
-    "register":    "রেজিস্টার করুন →",
-    "premiumUnavailable": "প্রিমিয়াম ডোমেইন — রেজিস্ট্রেশনের জন্য পাওয়া যাচ্ছে না",
-    "tryAlternatives": "এই alternatives গুলো available:",
-    "checkingAlts": "Alternatives চেক করা হচ্ছে...",
+    "register":    "Register করুন →",
+    "premiumUnavailable": "Premium ডোমেইন — এই মুহূর্তে registration করা যাচ্ছে না",
+    "tryAlternatives": "এই ডোমেইনগুলো এখনো available:",
+    "checkingAlts": "Alternatives check করা হচ্ছে...",
     "proof": {
       "secure":  "১০০% নিরাপদ",
-      "setup":   "২৪ ঘণ্টায় Setup",
-      "support": "স্থানীয় সাপোর্ট",
-      "powered": "প্রিমিয়াম অবকাঠামো"
+      "setup":   "২৪ ঘণ্টায় সেটআপ",
+      "support": "লোকাল সাপোর্ট",
+      "powered": "প্রিমিয়াম সার্ভার"
     }
   },
   "plans": {
     "badge":      "হোস্টিং প্যাকেজ",
     "heading1":   "আপনার বাজেট অনুযায়ী",
     "heading2":   "প্যাকেজ বেছে নিন",
-    "sub":        "সব প্যাকেজে আছে ফ্রি SSL, cPanel Access এবং ডেইলি ব্যাকআপ।",
+    "sub":        "সব প্যাকেজেই থাকছে Free SSL, cPanel access আর daily backup।",
     "monthly":    "মাসিক",
     "yearly":     "বার্ষিক",
     "save":       "১৭% সাশ্রয়",
     "perMonth":   "/মাস",
-    "yearlyBill": "বার্ষিক ৳{price} একসাথে payment",
+    "yearlyBill": "বছরে একবারে ৳{price} payment",
     "monthlyBill": "প্রতি মাসে payment",
     "orderNow":   "অর্ডার করুন →",
-    "note":       "সব প্যাকেজে আছে ৩০ দিনের মানি-ব্যাক গ্যারান্টি ·",
+    "note":       "সব প্যাকেজে ৩০ দিনের মানি-ব্যাক গ্যারান্টি ·",
     "learnMore":  "আরো জানুন",
     "starter": {
       "name":    "স্টার্টার",
-      "tagline": "Portfolio, Blog ও ছোট ব্যবসার সাইট"
+      "tagline": "Portfolio, blog আর ছোট ব্যবসার সাইটের জন্য"
     },
     "business": {
       "name":    "বিজনেস",
-      "tagline": "Growing business এর জন্য",
+      "tagline": "বাড়তে থাকা ব্যবসার জন্য",
       "badge":   "সবচেয়ে জনপ্রিয়"
     },
     "pro": {
       "name":    "প্রো",
-      "tagline": "Agency, বড় E-commerce ও multiple site"
+      "tagline": "Agency, বড় e-commerce আর একাধিক সাইটের জন্য"
     },
     "features": {
       "ssd5":          "৫ জিবি NVMe SSD স্টোরেজ",
@@ -63,17 +63,17 @@
       "ssd25":         "২৫ জিবি NVMe SSD স্টোরেজ",
       "site1":         "১টি ওয়েবসাইট",
       "site3":         "৩টি ওয়েবসাইট",
-      "siteUnlimited": "সীমাহীন ওয়েবসাইট",
+      "siteUnlimited": "আনলিমিটেড ওয়েবসাইট",
       "email5":        "৫টি ইমেইল অ্যাকাউন্ট",
       "email20":       "২০টি ইমেইল অ্যাকাউন্ট",
-      "emailUnlimited":"সীমাহীন ইমেইল অ্যাকাউন্ট",
-      "bwUnlimited":   "সীমাহীন ব্যান্ডউইথ",
-      "ssl":           "ফ্রি SSL সার্টিফিকেট",
+      "emailUnlimited":"আনলিমিটেড ইমেইল অ্যাকাউন্ট",
+      "bwUnlimited":   "আনলিমিটেড ব্যান্ডউইথ",
+      "ssl":           "Free SSL সার্টিফিকেট",
       "cpanel":        "cPanel Access",
       "backupDaily":   "ডেইলি ব্যাকআপ",
       "woocommerce":   "WooCommerce / E-commerce Ready",
-      "notRecommended":"প্রস্তাবিত নয়",
-      "priority":      "প্রায়রিটি সাপোর্ট ২৪/৭"
+      "notRecommended":"Recommended নয়",
+      "priority":      "প্রায়োরিটি সাপোর্ট ২৪/৭"
     }
   },
   "whyus": {
@@ -88,95 +88,95 @@
       "secure":  "নিরাপদ"
     },
     "features": {
-      "infra":   { "title": "প্রিমিয়াম অবকাঠামো",   "desc": "বিশ্বমানের সার্ভার অবকাঠামো — ৯৯.৯% আপটাইম SLA গ্যারান্টি সহ।" },
-      "ssl":     { "title": "সবসময় ফ্রি SSL",         "desc": "Let's Encrypt অটো-রিনিউয়াল — আপনার সাইট সবসময় HTTPS এ নিরাপদ থাকবে।" },
-      "setup":   { "title": "২৪ ঘণ্টায় সেটআপ",       "desc": "অর্ডার নিশ্চিত হলে ২৪ ঘণ্টার মধ্যে হোস্টিং রেডি — helpline থেকে call।" },
-      "support": { "title": "বাংলায় সাপোর্ট",         "desc": "স্থানীয় বাংলাদেশি দল — যেকোনো সমস্যায় বাংলায় সাহায্য পান।" },
-      "payment": { "title": "মোবাইল পেমেন্ট",         "desc": "বিকাশ, নগদ, রকেট, উপায় — যেকোনো MFS দিয়ে সহজেই payment করুন।" },
-      "backup":  { "title": "ডেইলি ব্যাকআপ",          "desc": "প্রতিদিন অটোমেটিক ব্যাকআপ — আপনার ডেটা সবসময় নিরাপদ।" }
+      "infra":   { "title": "প্রিমিয়াম সার্ভার",      "desc": "বিশ্বমানের server infrastructure — ৯৯.৯% uptime SLA গ্যারান্টিসহ।" },
+      "ssl":     { "title": "সবসময় Free SSL",          "desc": "Let's Encrypt auto-renewal — আপনার সাইট সবসময় HTTPS এ secure থাকবে।" },
+      "setup":   { "title": "২৪ ঘণ্টায় সেটআপ",        "desc": "অর্ডার confirm হলে ২৪ ঘণ্টার মধ্যেই হোস্টিং রেডি — helpline থেকে call পাবেন।" },
+      "support": { "title": "বাংলায় সাপোর্ট",          "desc": "আমাদের পুরো টিম বাংলাদেশি — যেকোনো সমস্যায় বাংলাতেই সমাধান পাবেন।" },
+      "payment": { "title": "মোবাইল পেমেন্ট",          "desc": "বিকাশ, নগদ, রকেট, উপায় — যেটা দিয়ে সুবিধা, সেটা দিয়েই payment করুন।" },
+      "backup":  { "title": "ডেইলি ব্যাকআপ",           "desc": "প্রতিদিন automatic backup — আপনার data নিয়ে কোনো টেনশন নেই।" }
     }
   },
   "how": {
     "badge":    "কীভাবে কাজ করে",
     "heading1": "মাত্র",
     "heading2": "৪টি সহজ ধাপে শুরু করুন",
-    "sub":      "কোনো technical জ্ঞান ছাড়াই — আমরা সব কিছু setup করে দেব।",
+    "sub":      "কোনো technical knowledge লাগবে না — সব setup আমরাই করে দেব।",
     "cta":      "এখনই শুরু করুন",
     "steps": {
-      "search": { "title": "ডোমেইন খুঁজুন",     "desc": "উপরের search box এ আপনার পছন্দের domain লিখুন এবং availability check করুন।" },
-      "plan":   { "title": "প্যাকেজ বেছে নিন",  "desc": "আপনার budget ও প্রয়োজন অনুযায়ী Starter, Business বা Pro বেছে নিন।" },
-      "pay":    { "title": "পেমেন্ট করুন",       "desc": "বিকাশ, নগদ, রকেট বা উপায়ে payment করুন এবং Transaction ID জমা দিন।" },
-      "live":   { "title": "সাইট চালু করুন",    "desc": "২৪ ঘণ্টার মধ্যে হোস্টিং সেটআপ হবে — helpline থেকে আপনাকে call করা হবে।", "statusNote": "ইনভয়েসের QR কোড থেকে যেকোনো সময় অর্ডার স্ট্যাটাস দেখুন।", "statusLink": "স্ট্যাটাস দেখুন →" }
+      "search": { "title": "ডোমেইন খুঁজুন",     "desc": "উপরের search box এ পছন্দের domain লিখে দেখে নিন available আছে কি না।" },
+      "plan":   { "title": "প্যাকেজ বেছে নিন",  "desc": "বাজেট আর প্রয়োজন বুঝে Starter, Business বা Pro বেছে নিন।" },
+      "pay":    { "title": "পেমেন্ট করুন",       "desc": "বিকাশ, নগদ, রকেট বা উপায়ে payment করে Transaction ID টা submit করুন।" },
+      "live":   { "title": "সাইট চালু করুন",    "desc": "২৪ ঘণ্টার মধ্যে হোস্টিং setup হয়ে যাবে — helpline থেকে আপনাকে call করা হবে।", "statusNote": "ইনভয়েসের QR কোড scan করে যেকোনো সময় অর্ডার স্ট্যাটাস দেখতে পারবেন।", "statusLink": "স্ট্যাটাস দেখুন →" }
     }
   },
   "faq": {
     "badge":   "সাধারণ জিজ্ঞাসা",
     "heading": "সাধারণ জিজ্ঞাসা",
-    "sub":     "আরো প্রশ্ন থাকলে সরাসরি call করুন —",
+    "sub":     "আরো কিছু জানার থাকলে সরাসরি call করুন —",
     "items": [
       {
-        "q": "Domain registration কত দিনে হয়?",
-        "a": "Payment confirm হওয়ার পর সাধারণত ২৪ ঘণ্টার মধ্যে আপনার domain ও hosting সম্পূর্ণ setup করা হয়। আমাদের helpline থেকে আপনাকে call করে জানানো হবে।"
+        "q": "Domain registration হতে কতদিন লাগে?",
+        "a": "Payment confirm হওয়ার পর সাধারণত ২৪ ঘণ্টার মধ্যেই আপনার domain আর hosting পুরোপুরি setup হয়ে যায়। Setup হয়ে গেলে helpline থেকে call করে জানিয়ে দেওয়া হবে।"
       },
       {
-        "q": "কোন payment method accept করা হয়?",
-        "a": "বর্তমানে বিকাশ, নগদ, রকেট এবং উপায়ে payment গ্রহণ করা হয়। Personal number 01915-557363 এ Send Money করতে হবে এবং Transaction ID form এ submit করতে হবে। সাপোর্টের জন্য call করুন 01970-222573।"
+        "q": "কোন কোন payment method এ pay করা যায়?",
+        "a": "এখন বিকাশ, নগদ, রকেট আর উপায়ে payment নেওয়া হয়। Personal number 01915-557363 এ Send Money করে Transaction ID টা form এ submit করলেই হবে। কোনো সমস্যা হলে call করুন 01970-222573 নম্বরে।"
       },
       {
-        "q": "কতদিনের জন্য hosting কিনতে পারব?",
-        "a": "Monthly বা Yearly দুইভাবেই নিতে পারবেন। Yearly নিলে প্রায় ২০% সাশ্রয় হয়।"
+        "q": "Hosting কি monthly নেওয়া যায়, নাকি yearly নিতেই হবে?",
+        "a": "দুইভাবেই নিতে পারবেন। তবে yearly নিলে প্রায় ২০% সাশ্রয় হয়।"
       },
       {
-        "q": "আমার কি technical জ্ঞান দরকার?",
-        "a": "না! আমরা সব setup করে দেব। cPanel access দেওয়া হবে এবং যেকোনো সমস্যায় আমাদের support team সাহায্য করবে।"
+        "q": "আমার কি technical knowledge থাকা লাগবে?",
+        "a": "একদমই না! সব setup আমরাই করে দেব। cPanel access পাবেন, আর যেকোনো সমস্যায় আমাদের support team তো আছেই।"
       },
       {
         "q": "SSL Certificate কি আলাদা কিনতে হবে?",
-        "a": "না, সব plan এ Free SSL (Let's Encrypt) দেওয়া হয় যা auto-renewal হয়। আপনার site সবসময় HTTPS এ থাকবে।"
+        "a": "না, সব প্যাকেজেই Free SSL (Let's Encrypt) দেওয়া হয়, যেটা automatic renew হয়। আপনার সাইট সবসময় HTTPS এ থাকবে।"
       },
       {
         "q": "Hosting renewal কীভাবে করব?",
-        "a": "Hosting expire হওয়ার আগে আমরা আপনাকে email ও phone এ remind করব। একই payment process এ renewal করা যাবে।"
+        "a": "Hosting এর মেয়াদ শেষ হওয়ার আগেই আমরা email আর phone এ মনে করিয়ে দেব। আগের মতো একই নিয়মে payment করলেই renewal হয়ে যাবে।"
       },
       {
-        "q": "পরে কি plan upgrade করতে পারব?",
-        "a": "হ্যাঁ, যেকোনো সময় plan upgrade করা যাবে। Upgrade করলে বাকি দিনের proportional charge নেওয়া হবে।"
+        "q": "পরে কি প্যাকেজ upgrade করা যাবে?",
+        "a": "হ্যাঁ, যেকোনো সময় upgrade করতে পারবেন। Upgrade করলে বাকি দিনগুলোর হিসাব করে proportional charge নেওয়া হবে।"
       },
       {
-        "q": "cPanel access পাব?",
-        "a": "হ্যাঁ, cPanel access পাবেন। এখন manual process এ কাজ করছি — ভবিষ্যতে WHMCS client portal চালু হবে।"
+        "q": "cPanel access পাব তো?",
+        "a": "হ্যাঁ, অবশ্যই পাবেন। এখন আমরা manual process এ কাজ করছি — সামনে WHMCS client portal চালু হবে।"
       },
       {
-        "q": "অর্ডার স্ট্যাটাস কিভাবে দেখব?",
-        "a": "অর্ডার দেওয়ার পর আপনি একটি invoice পাবেন যেখানে QR কোড থাকবে। সেটি scan করুন অথবা hosting.metagendigital.com/status এ গিয়ে যেকোনো সময় অর্ডারের অবস্থা দেখুন।"
+        "q": "অর্ডার স্ট্যাটাস কীভাবে দেখব?",
+        "a": "অর্ডার দেওয়ার পর একটা invoice পাবেন, যেখানে QR কোড থাকবে। সেটা scan করুন, অথবা hosting.metagendigital.com/status এ গিয়ে যেকোনো সময় অর্ডারের অবস্থা দেখে নিতে পারবেন।"
       }
     ]
   },
   "cta": {
-    "heading": "এখনই শুরু করুন — আমরা পাশে আছি",
-    "sub":     "২৪ ঘণ্টার মধ্যে আপনার domain ও hosting setup করে দেব। যেকোনো প্রশ্নে call করুন।",
+    "heading": "আজই শুরু করুন — আমরা পাশে আছি",
+    "sub":     "২৪ ঘণ্টার মধ্যে আপনার domain আর hosting setup করে দেব। যেকোনো প্রশ্নে call করুন।",
     "orderNow": "অর্ডার করুন",
     "whatsapp": "WhatsApp করুন",
-    "responseTime": "সাধারণত কয়েক ঘণ্টার মধ্যে — সর্বোচ্চ ২৪ ঘণ্টা"
+    "responseTime": "সাধারণত কয়েক ঘণ্টার মধ্যেই — সর্বোচ্চ ২৪ ঘণ্টা"
   },
   "footer": {
-    "tagline":    "ডোমেইন রেজিস্ট্রেশন, ওয়েব হোস্টিং, ওয়েবসাইট ডিজাইন ও ডিজিটাল মার্কেটিং — সব এক ছাদের নিচে। দ্রুত সেটআপ ও বিশেষজ্ঞ লোকাল সাপোর্টে বাংলাদেশের ব্যবসাগুলোকে এগিয়ে নিচ্ছি।",
-    "quickLinks": "দ্রুত লিংক",
+    "tagline":    "ডোমেইন রেজিস্ট্রেশন, ওয়েব হোস্টিং, ওয়েবসাইট ডিজাইন আর ডিজিটাল মার্কেটিং — সব এক জায়গায়। দ্রুত সেটআপ আর লোকাল সাপোর্ট দিয়ে বাংলাদেশের ব্যবসাগুলোকে এগিয়ে নিচ্ছি।",
+    "quickLinks": "দরকারি লিংক",
     "support":    "সাপোর্ট",
-    "rights":     "সকল অধিকার সংরক্ষিত।",
+    "rights":     "সর্বস্বত্ব সংরক্ষিত।",
     "address":    "উত্তরা ১০, ঢাকা, বাংলাদেশ",
     "links": {
       "domain":  "ডোমেইন সার্চ",
       "hosting": "হোস্টিং প্যাকেজ",
       "how":     "কীভাবে কাজ করে",
-      "faq":     "প্রশ্নোত্তর",
+      "faq":     "FAQ",
       "order":   "অর্ডার করুন",
       "terms":   "শর্তাবলী ও নীতিমালা"
     }
   },
   "order": {
     "title":       "অর্ডার করুন",
-    "sub":         "সব তথ্য সঠিকভাবে পূরণ করুন — payment confirm হলে ২৪ ঘণ্টায় setup হবে।",
+    "sub":         "সব তথ্য ঠিকঠাক পূরণ করুন — payment confirm হলেই ২৪ ঘণ্টার মধ্যে setup হয়ে যাবে।",
     "back":        "হোমে ফিরুন",
     "choosePlan":  "প্যাকেজ বেছে নিন",
     "billing":     "Billing:",
@@ -184,35 +184,35 @@
     "yearlySave":  "বার্ষিক (২০% সাশ্রয়)",
     "details":     "আপনার তথ্য",
     "domain":      "ডোমেইন নাম",
-    "company":     "কোম্পানির নাম (ঐচ্ছিক)",
+    "company":     "কোম্পানির নাম (optional)",
     "name":        "আপনার নাম",
     "phone":       "মোবাইল নম্বর",
     "email":       "ইমেইল",
     "address":     "ঠিকানা",
     "payment":     "পেমেন্ট করুন",
-    "payTo":       "এখানে পাঠান",
-    "personal":    "(ব্যক্তিগত)",
-    "amount":      "পরিমাণ:",
-    "amountNote":  "পাঠানোর পরে নিচে Transaction ID দিন।",
+    "payTo":       "এই নম্বরে পাঠান",
+    "personal":    "(Personal)",
+    "amount":      "টাকার পরিমাণ:",
+    "amountNote":  "টাকা পাঠানোর পর নিচে Transaction ID টা দিন।",
     "txId":        "Transaction ID",
-    "sendFrom":    "আপনার নম্বর (কোথা থেকে পাঠিয়েছেন)",
-    "submit":      "অর্ডার Submit করুন →",
+    "sendFrom":    "আপনার নম্বর (যেটা থেকে পাঠিয়েছেন)",
+    "submit":      "অর্ডার Confirm করুন →",
     "submitting":  "পাঠানো হচ্ছে...",
-    "terms":       "Submit করলে আমাদের",
+    "terms":       "Submit করলে আপনি আমাদের",
     "termsLink":   "শর্তাবলী ও নীতিমালা",
-    "errorGeneral":"কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন বা call করুন।",
-    "summary":     "অর্ডার সারসংক্ষেপ",
+    "errorGeneral":"কোথাও একটা সমস্যা হয়েছে। আবার চেষ্টা করুন, অথবা আমাদের call করুন।",
+    "summary":     "অর্ডার সামারি",
     "plan":        "প্যাকেজ",
     "billingLabel":"Billing",
     "domainLabel": "ডোমেইন",
     "total":       "মোট",
     "perMonth":    "/মাস",
     "perYear":     "/বছর",
-    "included":    "অন্তর্ভুক্ত",
-    "includedItems": ["ফ্রি SSL সার্টিফিকেট", "ডেইলি ব্যাকআপ", "cPanel অ্যাক্সেস", "২৪ঘণ্টায় সেটআপ", "হেল্পলাইন সাপোর্ট"],
-    "help":        "সাহায্য দরকার?",
+    "included":    "যা যা থাকছে",
+    "includedItems": ["Free SSL সার্টিফিকেট", "ডেইলি ব্যাকআপ", "cPanel Access", "২৪ ঘণ্টায় সেটআপ", "হেল্পলাইন সাপোর্ট"],
+    "help":        "সাহায্য লাগবে?",
     "helpSub":     "যেকোনো প্রশ্নে call করুন",
-    "statusNote":  "ইনভয়েসের QR কোড থেকে যেকোনো সময় অর্ডার স্ট্যাটাস দেখুন।",
+    "statusNote":  "ইনভয়েসের QR কোড scan করে যেকোনো সময় অর্ডার স্ট্যাটাস দেখতে পারবেন।",
     "statusLink":  "অর্ডার স্ট্যাটাস দেখুন →",
     "namePlaceholder":    "মোহাম্মদ তানভীর",
     "phonePlaceholder":   "০১XXXXXXXXX",
@@ -221,33 +221,33 @@
     "addressPlaceholder": "ঢাকা, বাংলাদেশ",
     "txPlaceholder":      "TXN123456789",
     "errors": {
-      "name":     "নাম দিন",
-      "phone":    "সঠিক mobile number দিন",
+      "name":     "আপনার নাম লিখুন",
+      "phone":    "সঠিক মোবাইল নম্বর দিন",
       "email":    "সঠিক email দিন",
-      "address":  "Address দিন",
-      "payMethod":"Payment method select করুন",
+      "address":  "ঠিকানা লিখুন",
+      "payMethod":"Payment method বেছে নিন",
       "txId":     "Transaction ID দিন",
-      "sendFrom": "আপনার নম্বর দিন"
+      "sendFrom": "যে নম্বর থেকে টাকা পাঠিয়েছেন, সেটা দিন"
     }
   },
   "thankyou": {
-    "badge":   "অর্ডার পাওয়া গেছে",
+    "badge":   "অর্ডার পেয়েছি",
     "heading": "ধন্যবাদ! 🎉",
-    "body":    "আপনার অর্ডার সফলভাবে পাঠানো হয়েছে। আমরা payment verify করে {hours} এর মধ্যে আপনার domain ও hosting setup করব।",
+    "body":    "আপনার অর্ডার আমরা পেয়ে গেছি। Payment verify করে {hours} এর মধ্যে আপনার domain আর hosting setup করে দেব।",
     "hours":   "২৪ ঘণ্টা",
     "orderId": "অর্ডার রেফারেন্স",
-    "saveId":  "এই ID টি সংরক্ষণ করুন",
-    "next":    "পরবর্তী পদক্ষেপ",
+    "saveId":  "এই ID টা রেখে দিন",
+    "next":    "এরপর যা হবে",
     "steps": [
-      "আমরা আপনার payment টি verify করব (সাধারণত কয়েক ঘণ্টার মধ্যে)।",
-      "Payment confirm হলে আপনার hosting সম্পূর্ণ setup করা হবে।",
-      "Setup complete হলে helpline থেকে আপনার দেওয়া নম্বরে call করা হবে।",
-      "cPanel login credentials আপনার email এ পাঠানো হবে।",
-      "নিচের বাটন থেকে invoice PDF download করুন — এতে QR কোড আছে, যা দিয়ে যেকোনো সময় অর্ডার স্ট্যাটাস দেখতে পারবেন।"
+      "আমরা আপনার payment verify করব (সাধারণত কয়েক ঘণ্টার মধ্যেই)।",
+      "Payment confirm হলে আপনার hosting পুরোপুরি setup করে দেওয়া হবে।",
+      "Setup হয়ে গেলে helpline থেকে আপনার নম্বরে call করা হবে।",
+      "cPanel এর login credentials আপনার email এ পাঠিয়ে দেওয়া হবে।",
+      "নিচের বাটন থেকে invoice PDF download করে রাখুন — এর QR কোড দিয়ে যেকোনো সময় অর্ডার স্ট্যাটাস দেখতে পারবেন।"
     ],
-    "home":        "Home এ ফিরুন",
+    "home":        "হোমে ফিরুন",
     "trackStatus": "অর্ডার স্ট্যাটাস দেখুন",
     "call":        "01970-222573",
-    "emailNote":   "সমস্যার জন্য email করুন:"
+    "emailNote":   "কোনো সমস্যা হলে email করুন:"
   }
 }

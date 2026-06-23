@@ -76,9 +76,9 @@ export default defineEventHandler(async (event) => {
       to: d.email,
       subject: `✅ Order Received — ${id} | MetaGen Hosting`,
       html: `
-<h2>আপনার Order পাওয়া গেছে! — ${id}</h2>
+<h2>আপনার অর্ডার আমরা পেয়েছি! — ${id}</h2>
 <p>প্রিয় ${d.fullName},</p>
-<p>আপনার order সফলভাবে পাঠানো হয়েছে। আমরা payment verify করে ২৪ ঘণ্টার মধ্যে আপনার hosting setup করব।</p>
+<p>আপনার অর্ডারটি আমরা পেয়ে গেছি। Payment verify করে ২৪ ঘণ্টার মধ্যেই আপনার hosting setup করে দেব।</p>
 <p><strong>Plan:</strong> ${d.plan} (${d.billing})<br/>
 <strong>Amount:</strong> ৳${d.price.toLocaleString()}<br/>
 <strong>TxID:</strong> ${d.txId}</p>

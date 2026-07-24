@@ -5,6 +5,7 @@ export default defineNuxtConfig({
   extends: ['github:Metagen-Digital/Shared#main'],
 
   compatibilityDate: '2025-07-15',
+  // hosting.metagendigital.com — deployed on Vercel (Metagen-Digital org).
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
 
   modules: [

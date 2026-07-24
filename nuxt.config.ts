@@ -17,7 +17,25 @@ export default defineNuxtConfig({
     '@nuxt/image',
     '@nuxtjs/i18n',
     'nuxt-gtag',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots',
   ],
+
+  // Absolute site URL for sitemap / canonical.
+  site: {
+    url: process.env.NUXT_PUBLIC_SITE_URL || 'https://hosting.metagendigital.com',
+    name: 'MetaGen Digital Hosting',
+  },
+
+  sitemap: {
+    // Keep private / per-user pages out of the sitemap.
+    exclude: [
+      '/dashboard', '/bn/dashboard',
+      '/auth/**', '/bn/auth/**',
+      '/status/**', '/bn/status/**',
+      '/thank-you', '/bn/thank-you',
+    ],
+  },
 
   // Google Analytics 4 for hosting.metagendigital.com. The Measurement ID is
   // not a secret, so the site's own ID is the default; NUXT_PUBLIC_GTAG_ID can

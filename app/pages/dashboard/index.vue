@@ -1,7 +1,8 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
 
-const { user, userInitials, logout, loading, updateProfile, changePassword, authToken } = useAuth()
+const { user, userInitials, logout, loading, updateProfile, changePassword } = useAuth()
+const { apiFetch } = useApiClient()
 const config = useRuntimeConfig()
 const apiBase = (config.public.apiBase as string) || `${config.public.backendUrl}/api`
 
@@ -82,11 +83,9 @@ const displayOrders = computed(() => {
 })
 
 async function fetchHostingOrders() {
-  if (!authToken.value) return
+  if (!user.value) return
   try {
-    const data = await $fetch<any>(`${apiBase}/auth/hosting-orders`, {
-      headers: { Authorization: `Bearer ${authToken.value}`, Accept: 'application/json' },
-    })
+    const data = await apiFetch<any>('/auth/hosting-orders')
     apiOrders.value = data.data || []
   } catch {
     apiOrders.value = []
@@ -109,12 +108,10 @@ const invoicesLoading = ref(false)
 const invoiceDownloading = ref<string | null>(null)
 
 async function fetchInvoices() {
-  if (!authToken.value) return
+  if (!user.value) return
   invoicesLoading.value = true
   try {
-    const data = await $fetch<any>(`${apiBase}/auth/invoices`, {
-      headers: { Authorization: `Bearer ${authToken.value}`, Accept: 'application/json' },
-    })
+    const data = await apiFetch<any>('/auth/invoices')
     invoices.value = data.data || []
   } catch {
     invoices.value = []
@@ -124,11 +121,12 @@ async function fetchInvoices() {
 }
 
 async function downloadInvoice(invoiceNumber: string) {
-  if (!authToken.value) return
+  if (!user.value) return
   invoiceDownloading.value = invoiceNumber
   try {
+    // Native fetch for the binary PDF; GET needs no CSRF, just the session cookie.
     const res = await fetch(`${apiBase}/auth/invoices/${invoiceNumber}/download`, {
-      headers: { Authorization: `Bearer ${authToken.value}` },
+      credentials: 'include',
     })
     if (!res.ok) throw new Error('Download failed')
     const blob = await res.blob()

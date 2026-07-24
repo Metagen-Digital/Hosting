@@ -1,4 +1,9 @@
 export default defineNuxtConfig({
+  // Shared auth/API layer. For local co-development against a checkout, swap to
+  // extends: ['../MetagenShared'] — but keep the Git URL committed (Vercel repos
+  // don't have the sibling folder). See MetagenShared/README.md.
+  extends: ['github:Metagen-Digital/Shared#main'],
+
   compatibilityDate: '2025-07-15',
   devtools: { enabled: process.env.NODE_ENV !== 'production' },
 

@@ -15,7 +15,14 @@ export default defineNuxtConfig({
     '@nuxt/icon',
     '@nuxt/image',
     '@nuxtjs/i18n',
+    'nuxt-gtag',
   ],
+
+  // Google Analytics 4. Set NUXT_PUBLIC_GTAG_ID (G-XXXXXXXXXX) in the env.
+  gtag: {
+    id: process.env.NUXT_PUBLIC_GTAG_ID,
+    enabled: process.env.NODE_ENV === 'production',
+  },
 
   css: ['~/assets/css/main.css'],
 
@@ -40,6 +47,11 @@ export default defineNuxtConfig({
       meta: [
         { name: 'viewport', content: 'width=device-width, initial-scale=1, viewport-fit=cover' },
         { charset: 'utf-8' },
+        // Google Search Console verification (HTML-tag method). This is a
+        // SEPARATE property from the main site — use its own token here.
+        ...(process.env.NUXT_PUBLIC_GSC_VERIFICATION
+          ? [{ name: 'google-site-verification', content: process.env.NUXT_PUBLIC_GSC_VERIFICATION }]
+          : []),
       ],
       title: 'Domain & Hosting Bangladesh | MetaGenDigital',
       link: [

@@ -21,6 +21,7 @@
     "jspdf": "^4.2.1",
     "nodemailer": "^6.10.1",
     "nuxt": "^4.4.2",
+    "nuxt-gtag": "^4.1.0",
     "qrcode": "^1.5.4",
     "vee-validate": "^4.15.1",
     "vue": "^3.5.31",

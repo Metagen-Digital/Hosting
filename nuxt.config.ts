@@ -18,9 +18,11 @@ export default defineNuxtConfig({
     'nuxt-gtag',
   ],
 
-  // Google Analytics 4. Set NUXT_PUBLIC_GTAG_ID (G-XXXXXXXXXX) in the env.
+  // Google Analytics 4 for hosting.metagendigital.com. The Measurement ID is
+  // not a secret, so the site's own ID is the default; NUXT_PUBLIC_GTAG_ID can
+  // still override it. Loads in production only.
   gtag: {
-    id: process.env.NUXT_PUBLIC_GTAG_ID,
+    id: process.env.NUXT_PUBLIC_GTAG_ID || 'G-RSVH9CX65Y',
     enabled: process.env.NODE_ENV === 'production',
   },
 

@@ -95,7 +95,7 @@ const socialLinks = [
             </li>
             <li class="flex items-center gap-2">
               <Icon name="heroicons:envelope-16-solid" class="w-4 h-4 shrink-0 text-brand-primary" />
-              <a href="mailto:metagendigital@gmail.com" class="hover:text-white transition-colors truncate">metagendigital@gmail.com</a>
+              <a href="mailto:hello@metagendigital.com" class="hover:text-white transition-colors truncate">hello@metagendigital.com</a>
             </li>
             <li class="flex items-center gap-2">
               <Icon name="heroicons:phone-16-solid" class="w-4 h-4 shrink-0 text-brand-primary" />

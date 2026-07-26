@@ -10,6 +10,21 @@ const faqs = computed(() => {
   }))
 })
 
+// FAQPage rich result — the answers can render as an expandable block directly
+// in the SERP, taking up more space and intercepting the click. The questions
+// are locale-aware, so the bn page emits Bengali markup.
+useJsonLd('faq', () => {
+  if (!faqs.value.length) return null
+  return {
+    '@type': 'FAQPage',
+    mainEntity: faqs.value.map(faq => ({
+      '@type': 'Question',
+      name: faq.q,
+      acceptedAnswer: { '@type': 'Answer', text: faq.a },
+    })),
+  }
+})
+
 function toggle(i: number) {
   openIndex.value = openIndex.value === i ? null : i
 }

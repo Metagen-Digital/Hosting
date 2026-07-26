@@ -1,0 +1,15 @@
+# Private areas — blocked from crawling outright. The /bn/ variants are added
+# automatically by @nuxtjs/robots from the i18n config, so listing them here
+# too only produces duplicate Disallow lines.
+#
+# /order, /thank-you and /status/* are deliberately NOT listed: they each set a
+# noindex meta tag, and a Disallow would stop Google from ever reading that
+# tag, leaving the bare URLs eligible to appear in results.
+#
+# No Sitemap: line here either — @nuxtjs/sitemap appends the real index
+# (/sitemap_index.xml, which fans out to the en and bn sitemaps). A hand-written
+# /sitemap.xml entry only adds a redirect hop.
+User-Agent: *
+Allow: /
+Disallow: /dashboard
+Disallow: /auth/

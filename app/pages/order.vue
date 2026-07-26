@@ -81,11 +81,24 @@ function validate() {
 /* ── Submit ── */
 const loading = ref(false)
 const orderStore = useOrderStore()
+const { trackPurchase, trackInitiateCheckout, newEventId, trackingPayload } = useAnalytics()
+
+// Reaching the order form with a plan selected is the checkout start — the
+// step Meta needs in order to measure and optimise the funnel above Purchase.
+onMounted(() => {
+  trackInitiateCheckout({ value: price.value, plan: plans[selectedPlan.value].name })
+})
 
 async function submit() {
   if (!validate()) return
   loading.value = true
   try {
+    // Minted before the request so the browser pixel and Laravel's
+    // Conversions API report this Purchase under the same id — that is what
+    // lets Meta drop the duplicate instead of counting two sales.
+    const eventId = newEventId()
+    const { event_id, fbp, fbc } = trackingPayload(eventId)
+
     const result = await $fetch<{ success: boolean; orderId: string }>('/api/order', {
       method: 'POST',
       body: {
@@ -93,6 +106,9 @@ async function submit() {
         plan: plans[selectedPlan.value].name,
         billing: billing.value,
         price: price.value,
+        eventId: event_id,
+        fbp,
+        fbc,
       },
     })
     const orderedAt = new Date().toISOString()
@@ -112,6 +128,15 @@ async function submit() {
       sendFrom:    form.sendFrom,
       orderedAt,
     }
+    // The revenue event. Fired only after the API confirms the order, so ad
+    // optimisation never learns from a failed submit.
+    trackPurchase({
+      value: price.value,
+      currency: 'BDT',
+      orderId: result.orderId,
+      plan: plans[selectedPlan.value].name,
+    }, eventId)
+
     // Save to localStorage so dashboard can show order history
     try {
       const existing = JSON.parse(localStorage.getItem('mgd_orders') || '[]')

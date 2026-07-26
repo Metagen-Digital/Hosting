@@ -13,6 +13,11 @@ const schema = z.object({
   payMethod:   z.enum(['bkash', 'nagad', 'rocket', 'upay']),
   txId:        z.string().min(1),
   sendFrom:    z.string().regex(/^01\d{9}$/),
+  // Meta Pixel dedupe metadata. Shared with the browser's Purchase event so
+  // Laravel's Conversions API send is recognised as the same conversion.
+  eventId:     z.string().max(100).optional(),
+  fbp:         z.string().max(255).optional(),
+  fbc:         z.string().max(255).optional(),
 })
 
 function orderId() {
@@ -61,6 +66,15 @@ export default defineEventHandler(async (event) => {
         tx_id:        d.txId,
         send_from:    d.sendFrom,
         ordered_at:   new Date().toISOString(),
+        // Tracking metadata for Laravel's Conversions API send. This is a
+        // server-to-server call, so Laravel would otherwise attribute the
+        // conversion to this server's IP and user agent — forward the
+        // visitor's own or the Meta match rate collapses.
+        event_id:     d.eventId,
+        fbp:          d.fbp,
+        fbc:          d.fbc,
+        client_ip:    getRequestIP(event, { xForwardedFor: true }),
+        client_ua:    getRequestHeader(event, 'user-agent'),
       },
     })
   } catch {

@@ -1,4 +1,10 @@
 {
+  "chatWidget": {
+    "open": "Chat with us",
+    "close": "Close chat menu",
+    "messenger": "Message us on Messenger",
+    "whatsapp": "Chat on WhatsApp"
+  },
   "nav": {
     "domain":  "Domain",
     "hosting": "Hosting",

@@ -1,4 +1,10 @@
 {
+  "chatWidget": {
+    "open": "আমাদের সাথে চ্যাট করুন",
+    "close": "চ্যাট মেনু বন্ধ করুন",
+    "messenger": "Messenger-এ মেসেজ করুন",
+    "whatsapp": "WhatsApp-এ চ্যাট করুন"
+  },
   "nav": {
     "domain":  "ডোমেইন",
     "hosting": "হোস্টিং",

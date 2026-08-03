@@ -1,9 +1,9 @@
-// Tracks phone / email / WhatsApp taps as Contact conversions.
+// Tracks phone / email / WhatsApp / Messenger taps as Contact conversions.
 //
 // Done with one delegated listener on the document rather than a handler per
 // link: these links are scattered across the footer, contact page, FAQ blocks
 // and several detail pages, and new ones get added over time. Delegation means
-// any tel:/mailto:/wa.me link anywhere is covered automatically.
+// any tel:/mailto:/wa.me/m.me link anywhere is covered automatically.
 export default defineNuxtPlugin(() => {
   const { trackContact } = useAnalytics()
 
@@ -11,6 +11,7 @@ export default defineNuxtPlugin(() => {
     if (href.startsWith('tel:')) return 'phone'
     if (href.startsWith('mailto:')) return 'email'
     if (href.includes('wa.me') || href.includes('whatsapp.com')) return 'whatsapp'
+    if (href.includes('m.me')) return 'messenger'
     return null
   }
 

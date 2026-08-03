@@ -119,6 +119,9 @@ export default defineNuxtConfig({
       // pools both audiences, which is what you want until traffic is large
       // enough to fund two separate learning phases.
       fbPixelId: process.env.NUXT_PUBLIC_FB_PIXEL_ID || '',
+      // Sentry DSN — not a secret (it ships in the browser). Empty means the
+      // error-monitoring plugin stays inert. See app/plugins/sentry.client.ts
+      sentryDsn: process.env.NUXT_PUBLIC_SENTRY_DSN || '',
     },
   },
 
@@ -160,7 +163,9 @@ export default defineNuxtConfig({
           "style-src 'self' 'unsafe-inline' https://fonts.googleapis.com",
           "font-src 'self' data: https://fonts.gstatic.com",
           "img-src 'self' data: blob: https:",
-          "connect-src 'self' https://api.metagendigital.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.facebook.com https://connect.facebook.net",
+          // *.ingest.*.sentry.io covers Sentry's regional ingest hosts (us/de/
+          // default) — only used once NUXT_PUBLIC_SENTRY_DSN is actually set.
+          "connect-src 'self' https://api.metagendigital.com https://www.googletagmanager.com https://www.google-analytics.com https://*.google-analytics.com https://*.analytics.google.com https://www.facebook.com https://connect.facebook.net https://*.ingest.us.sentry.io https://*.ingest.de.sentry.io https://*.ingest.sentry.io",
           "frame-ancestors 'self'",
           "base-uri 'self'",
           "form-action 'self'",

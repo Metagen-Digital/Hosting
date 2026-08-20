@@ -20,10 +20,33 @@ const schema = z.object({
   fbc:         z.string().max(255).optional(),
 })
 
+// Crockford-ish alphabet: no I/O/0/1, so a customer reading the id off a
+// receipt cannot mistype it.
+const ID_ALPHABET = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+const ID_LENGTH = 10
+
+/**
+ * Order reference.
+ *
+ * Uses the CSPRNG, not Math.random(): this id is the only thing standing
+ * between a stranger and someone else's order details on the public status
+ * lookup, and Math.random() is a predictable PRNG — observing a few outputs
+ * narrows the rest. Ten characters over a 32-symbol alphabet is ~50 bits,
+ * versus ~30 bits at the old length of six, where a birthday collision was
+ * plausible within a few tens of thousands of orders.
+ *
+ * The status endpoint additionally requires the order's email address, so this
+ * is one factor rather than the whole credential.
+ */
 function orderId() {
-  const chars = 'ABCDEFGHJKLMNPQRSTUVWXYZ23456789'
+  const bytes = new Uint8Array(ID_LENGTH)
+  globalThis.crypto.getRandomValues(bytes)
+
   let id = 'MGD-'
-  for (let i = 0; i < 6; i++) id += chars[Math.floor(Math.random() * chars.length)]
+  for (let i = 0; i < ID_LENGTH; i++) {
+    // 256 % 32 === 0, so the modulo introduces no bias here.
+    id += ID_ALPHABET[bytes[i] % ID_ALPHABET.length]
+  }
   return id
 }
 
@@ -51,6 +74,11 @@ export default defineEventHandler(async (event) => {
   try {
     await $fetch(`${backendUrl}/api/hosting-orders`, {
       method: 'POST',
+      // Laravel queues the confirmation mail and the Meta event, so this call
+      // is a database write and nothing more. Bound it explicitly: an
+      // unbounded default is what let a slow SMTP server time this route out
+      // at the edge after the order had already been written.
+      timeout: 8000,
       body: {
         order_id:     id,
         full_name:    d.fullName,
@@ -77,10 +105,21 @@ export default defineEventHandler(async (event) => {
         client_ua:    getRequestHeader(event, 'user-agent'),
       },
     })
-  } catch {
+  } catch (err: any) {
+    // Validation rejections from Laravel are the customer's problem to fix and
+    // must not be reported as "try again" — retrying an invalid payload just
+    // produces the same failure.
+    const status = err?.response?.status ?? err?.statusCode
+    if (status === 422) {
+      throw createError({
+        statusCode: 422,
+        message: err?.data?.message || 'Some of the order details were rejected. Please review and resubmit.',
+      })
+    }
+
     throw createError({
       statusCode: 502,
-      message: 'We could not place your order right now. Please try again, or contact us on 01970-222573.',
+      message: 'We could not confirm your order. Please do NOT pay again — call us on 01970-222573 and we will check it for you.',
     })
   }
 

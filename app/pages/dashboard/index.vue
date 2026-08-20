@@ -1,6 +1,7 @@
 <script setup lang="ts">
 definePageMeta({ middleware: 'auth' })
 
+const { t } = useI18n()
 const { user, userInitials, logout, loading, updateProfile, changePassword } = useAuth()
 const { apiFetch } = useApiClient()
 const config = useRuntimeConfig()
@@ -58,11 +59,11 @@ async function savePassword() {
   }
 }
 
-const tabs = [
-  { id: 'account', label: 'My Account',   icon: 'mdi:account-circle-outline' },
-  { id: 'orders',  label: 'My Orders',    icon: 'mdi:package-variant-closed'  },
-  { id: 'track',   label: 'Track Order',  icon: 'mdi:map-marker-path'         },
-]
+const tabs = computed(() => [
+  { id: 'account', label: t('dashboard.tabs.account'), icon: 'mdi:account-circle-outline' },
+  { id: 'orders',  label: t('dashboard.tabs.orders'),  icon: 'mdi:package-variant-closed'  },
+  { id: 'track',   label: t('dashboard.tabs.track'),   icon: 'mdi:map-marker-path'         },
+])
 
 interface SavedOrder {
   orderId: string
@@ -137,7 +138,7 @@ async function downloadInvoice(invoiceNumber: string) {
     a.click()
     URL.revokeObjectURL(url)
   } catch {
-    alert('Failed to download invoice. Please try again.')
+    alert(t('dashboard.orders.downloadFailed'))
   } finally {
     invoiceDownloading.value = null
   }
@@ -164,16 +165,26 @@ async function checkOrderStatus() {
   trackResult.value = null
   trackLoading.value = true
   try {
+    // POST with the account email, not a bare GET: the backend route now
+    // requires order_id + email together (a leaked/guessed order id alone
+    // used to be enough to see someone else's order). Since this page is
+    // already behind the `auth` middleware, the signed-in user's own email
+    // is the correct value to send — no separate prompt needed here, unlike
+    // the public /status lookup page.
     const data = await $fetch<any>(
       `${apiBase}/hosting-orders/${trackId.value.trim()}/status`,
-      { headers: { Accept: 'application/json' } },
+      {
+        method: 'POST',
+        body: { email: user.value?.email },
+        headers: { Accept: 'application/json' },
+      },
     )
     trackResult.value = data as any
   } catch (e: any) {
     const status = e?.response?.status || e?.status
     trackError.value = status === 429
-      ? 'Too many requests. Wait a moment and try again.'
-      : 'Order not found. Please check the order ID.'
+      ? t('dashboard.track.tooManyRequests')
+      : t('dashboard.track.notFound')
   } finally {
     trackLoading.value = false
   }
@@ -193,14 +204,14 @@ const statusStyle: Record<string, string> = {
     <div class="max-w-5xl mx-auto">
 
       <div class="mb-6 flex items-center justify-between">
-        <h1 class="text-xl font-bold text-brand-text-primary font-display">Dashboard</h1>
+        <h1 class="text-xl font-bold text-brand-text-primary font-display">{{ t('dashboard.title') }}</h1>
         <button
           :disabled="loading"
           class="hidden md:flex items-center gap-1.5 px-3 py-1.5 rounded-btn text-xs font-semibold text-red-500 border border-red-200 hover:bg-red-50 transition-colors disabled:opacity-50"
           @click="logout"
         >
           <Icon name="mdi:logout" class="w-3.5 h-3.5" />
-          Sign out
+          {{ t('dashboard.signOut') }}
         </button>
       </div>
 
@@ -243,7 +254,7 @@ const statusStyle: Record<string, string> = {
                 @click="logout"
               >
                 <Icon name="mdi:logout" class="w-4 h-4 shrink-0" />
-                Sign out
+                {{ t('dashboard.signOut') }}
               </button>
             </div>
           </div>
@@ -258,22 +269,22 @@ const statusStyle: Record<string, string> = {
             <div class="bg-white rounded-2xl border border-brand-border shadow-card p-6 space-y-4">
               <h2 class="text-base font-bold text-brand-text-primary flex items-center gap-2">
                 <Icon name="mdi:account-edit-outline" class="w-5 h-5 text-brand-primary" />
-                Edit Profile
+                {{ t('dashboard.account.editProfile') }}
               </h2>
 
               <div v-if="profileSuccess" class="flex items-center gap-2 px-3 py-2.5 bg-green-50 border border-green-200 rounded-lg text-xs font-semibold text-green-700">
                 <Icon name="mdi:check-circle" class="w-4 h-4 shrink-0" />
-                Profile updated successfully.
+                {{ t('dashboard.account.profileUpdated') }}
               </div>
 
               <form class="space-y-4" @submit.prevent="saveProfile">
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">Full Name</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.fullName') }}</label>
                   <input
                     v-model="profileForm.name"
                     type="text"
                     required
-                    placeholder="Your full name"
+                    :placeholder="t('dashboard.account.fullNamePlaceholder')"
                     class="w-full px-4 py-2.5 rounded-lg border text-sm outline-none focus:ring-2 focus:ring-brand-primary/20 transition-colors"
                     :class="profileErrors.name ? 'border-red-400 bg-red-50' : 'border-brand-border focus:border-brand-primary'"
                   />
@@ -281,22 +292,22 @@ const statusStyle: Record<string, string> = {
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">Email Address</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.emailAddress') }}</label>
                   <input
                     :value="user?.email"
                     type="email"
                     disabled
                     class="w-full px-4 py-2.5 rounded-lg border border-brand-border bg-brand-surface text-sm text-brand-text-muted cursor-not-allowed"
                   />
-                  <p class="mt-1 text-xs text-brand-text-muted">Email cannot be changed.</p>
+                  <p class="mt-1 text-xs text-brand-text-muted">{{ t('dashboard.account.emailCannotChange') }}</p>
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">Phone Number</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.phoneNumber') }}</label>
                   <input
                     v-model="profileForm.phone"
                     type="tel"
-                    placeholder="+880 1XXX-XXXXXX"
+                    :placeholder="t('dashboard.account.phonePlaceholder')"
                     class="w-full px-4 py-2.5 rounded-lg border text-sm outline-none focus:ring-2 focus:ring-brand-primary/20 transition-colors"
                     :class="profileErrors.phone ? 'border-red-400 bg-red-50' : 'border-brand-border focus:border-brand-primary'"
                   />
@@ -309,7 +320,7 @@ const statusStyle: Record<string, string> = {
                   class="flex items-center gap-2 px-5 py-2.5 rounded-btn text-sm font-semibold text-white bg-gradient-brand hover:shadow-glow-primary hover:scale-[1.02] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Icon v-if="loading" name="mdi:loading" class="w-4 h-4 animate-spin" />
-                  <span>{{ loading ? 'Saving…' : 'Save Changes' }}</span>
+                  <span>{{ loading ? t('dashboard.account.saving') : t('dashboard.account.saveChanges') }}</span>
                 </button>
               </form>
             </div>
@@ -317,17 +328,17 @@ const statusStyle: Record<string, string> = {
             <div class="bg-white rounded-2xl border border-brand-border shadow-card p-6 space-y-4">
               <h2 class="text-base font-bold text-brand-text-primary flex items-center gap-2">
                 <Icon name="mdi:lock-outline" class="w-5 h-5 text-brand-primary" />
-                Change Password
+                {{ t('dashboard.account.changePassword') }}
               </h2>
 
               <div v-if="passwordSuccess" class="flex items-center gap-2 px-3 py-2.5 bg-green-50 border border-green-200 rounded-lg text-xs font-semibold text-green-700">
                 <Icon name="mdi:check-circle" class="w-4 h-4 shrink-0" />
-                Password changed successfully.
+                {{ t('dashboard.account.passwordChanged') }}
               </div>
 
               <form class="space-y-4" @submit.prevent="savePassword">
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">Current Password</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.currentPassword') }}</label>
                   <div class="relative">
                     <input
                       v-model="passwordForm.current_password"
@@ -345,14 +356,14 @@ const statusStyle: Record<string, string> = {
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">New Password</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.newPassword') }}</label>
                   <div class="relative">
                     <input
                       v-model="passwordForm.password"
                       :type="showNewPw ? 'text' : 'password'"
                       required
                       minlength="8"
-                      placeholder="Min. 8 characters"
+                      :placeholder="t('dashboard.account.newPasswordPlaceholder')"
                       class="w-full px-4 py-2.5 rounded-lg border text-sm outline-none focus:ring-2 focus:ring-brand-primary/20 transition-colors pr-10"
                       :class="passwordErrors.password ? 'border-red-400 bg-red-50' : 'border-brand-border focus:border-brand-primary'"
                     />
@@ -364,12 +375,12 @@ const statusStyle: Record<string, string> = {
                 </div>
 
                 <div>
-                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">Confirm New Password</label>
+                  <label class="block text-xs font-semibold text-brand-text-primary mb-1.5">{{ t('dashboard.account.confirmNewPassword') }}</label>
                   <input
                     v-model="passwordForm.password_confirmation"
                     type="password"
                     required
-                    placeholder="Re-enter new password"
+                    :placeholder="t('dashboard.account.confirmNewPasswordPlaceholder')"
                     class="w-full px-4 py-2.5 rounded-lg border text-sm outline-none focus:ring-2 focus:ring-brand-primary/20 transition-colors"
                     :class="passwordErrors.password_confirmation ? 'border-red-400 bg-red-50' : 'border-brand-border focus:border-brand-primary'"
                   />
@@ -382,7 +393,7 @@ const statusStyle: Record<string, string> = {
                   class="flex items-center gap-2 px-5 py-2.5 rounded-btn text-sm font-semibold text-white bg-gradient-brand hover:shadow-glow-primary hover:scale-[1.02] transition-all disabled:opacity-50 disabled:cursor-not-allowed"
                 >
                   <Icon v-if="loading" name="mdi:loading" class="w-4 h-4 animate-spin" />
-                  <span>{{ loading ? 'Updating…' : 'Update Password' }}</span>
+                  <span>{{ loading ? t('dashboard.account.updating') : t('dashboard.account.updatePassword') }}</span>
                 </button>
               </form>
             </div>
@@ -396,12 +407,12 @@ const statusStyle: Record<string, string> = {
             <div class="bg-white rounded-2xl border border-brand-border shadow-card p-6 space-y-4">
               <h2 class="text-base font-bold text-brand-text-primary flex items-center gap-2">
                 <Icon name="mdi:server-network" class="w-5 h-5 text-brand-primary" />
-                Hosting Orders
+                {{ t('dashboard.orders.hostingOrders') }}
               </h2>
               <div v-if="!displayOrders.length" class="py-8 text-center">
                 <Icon name="mdi:inbox-outline" class="w-10 h-10 text-brand-text-muted mx-auto mb-2" />
-                <p class="text-sm font-semibold text-brand-text-secondary">No hosting orders yet</p>
-                <p class="text-xs text-brand-text-muted mt-1">Orders placed from this portal will appear here.</p>
+                <p class="text-sm font-semibold text-brand-text-secondary">{{ t('dashboard.orders.noOrders') }}</p>
+                <p class="text-xs text-brand-text-muted mt-1">{{ t('dashboard.orders.noOrdersHint') }}</p>
               </div>
               <div v-else class="space-y-3">
                 <div
@@ -437,7 +448,7 @@ const statusStyle: Record<string, string> = {
                     class="mt-3 text-xs font-semibold text-brand-primary hover:underline"
                     @click="trackId = order.orderId; activeTab = 'track'; checkOrderStatus()"
                   >
-                    Track this order →
+                    {{ t('dashboard.orders.trackThisOrder') }}
                   </button>
                 </div>
               </div>
@@ -447,18 +458,18 @@ const statusStyle: Record<string, string> = {
             <div class="bg-white rounded-2xl border border-brand-border shadow-card p-6 space-y-4">
               <h2 class="text-base font-bold text-brand-text-primary flex items-center gap-2">
                 <Icon name="mdi:file-document-outline" class="w-5 h-5 text-brand-primary" />
-                Invoices
+                {{ t('dashboard.orders.invoices') }}
               </h2>
 
               <div v-if="invoicesLoading" class="py-8 flex items-center justify-center gap-2 text-brand-text-muted text-sm">
                 <Icon name="mdi:loading" class="w-5 h-5 animate-spin" />
-                Loading invoices…
+                {{ t('dashboard.orders.loadingInvoices') }}
               </div>
 
               <div v-else-if="!invoices.length" class="py-8 text-center">
                 <Icon name="mdi:file-outline" class="w-10 h-10 text-brand-text-muted mx-auto mb-2" />
-                <p class="text-sm font-semibold text-brand-text-secondary">No invoices yet</p>
-                <p class="text-xs text-brand-text-muted mt-1">Invoices generated by MetaGenDigital will appear here.</p>
+                <p class="text-sm font-semibold text-brand-text-secondary">{{ t('dashboard.orders.noInvoices') }}</p>
+                <p class="text-xs text-brand-text-muted mt-1">{{ t('dashboard.orders.noInvoicesHint') }}</p>
               </div>
 
               <div v-else class="space-y-3">
@@ -500,7 +511,7 @@ const statusStyle: Record<string, string> = {
                       class="w-3.5 h-3.5"
                       :class="invoiceDownloading === inv.invoice_number ? 'animate-spin' : ''"
                     />
-                    {{ invoiceDownloading === inv.invoice_number ? 'Downloading…' : 'Download PDF' }}
+                    {{ invoiceDownloading === inv.invoice_number ? t('dashboard.orders.downloading') : t('dashboard.orders.downloadPdf') }}
                   </button>
                 </div>
               </div>
@@ -512,14 +523,14 @@ const statusStyle: Record<string, string> = {
           <div v-if="activeTab === 'track'" class="bg-white rounded-2xl border border-brand-border shadow-card p-6 space-y-5">
             <h2 class="text-base font-bold text-brand-text-primary flex items-center gap-2">
               <Icon name="mdi:map-marker-path" class="w-5 h-5 text-brand-primary" />
-              Track Order
+              {{ t('dashboard.track.heading') }}
             </h2>
 
             <div class="flex gap-2">
               <input
                 v-model="trackId"
                 type="text"
-                placeholder="Enter Order ID (e.g. MGD-123456)"
+                :placeholder="t('dashboard.track.placeholder')"
                 class="flex-1 px-4 py-2.5 rounded-lg border border-brand-border text-sm outline-none focus:ring-2 focus:ring-brand-primary/20 focus:border-brand-primary transition-colors"
                 @keyup.enter="checkOrderStatus"
               />
@@ -529,7 +540,7 @@ const statusStyle: Record<string, string> = {
                 @click="checkOrderStatus"
               >
                 <Icon v-if="trackLoading" name="mdi:loading" class="w-4 h-4 animate-spin" />
-                <span v-else>Check</span>
+                <span v-else>{{ t('dashboard.track.check') }}</span>
               </button>
             </div>
 
@@ -540,27 +551,27 @@ const statusStyle: Record<string, string> = {
 
             <div v-if="trackResult" class="p-4 rounded-xl bg-brand-surface border border-brand-border space-y-3">
               <div class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Order ID</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.orderId') }}</span>
                 <span class="text-sm font-bold text-brand-text-primary">{{ trackResult.order_id || trackResult.id }}</span>
               </div>
               <div v-if="trackResult.plan" class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Plan</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.plan') }}</span>
                 <span class="text-sm font-semibold text-brand-text-primary capitalize">{{ trackResult.plan }}</span>
               </div>
               <div v-if="trackResult.domain" class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Domain</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.domain') }}</span>
                 <span class="text-sm font-semibold text-brand-text-primary">{{ trackResult.domain }}</span>
               </div>
               <div v-if="trackResult.billing" class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Billing</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.billing') }}</span>
                 <span class="text-sm font-semibold text-brand-text-primary capitalize">{{ trackResult.billing }}</span>
               </div>
               <div v-if="trackResult.price" class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Price</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.price') }}</span>
                 <span class="text-sm font-bold text-brand-primary">৳{{ trackResult.price }}</span>
               </div>
               <div v-if="trackResult.status" class="flex items-center justify-between">
-                <span class="text-xs font-semibold text-brand-text-muted">Status</span>
+                <span class="text-xs font-semibold text-brand-text-muted">{{ t('dashboard.track.status') }}</span>
                 <span
                   class="px-2.5 py-0.5 rounded-full text-xs font-semibold border capitalize"
                   :class="statusStyle[trackResult.status] || 'bg-gray-100 text-gray-700 border-gray-200'"

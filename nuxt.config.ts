@@ -51,15 +51,39 @@ export default defineNuxtConfig({
     { path: '~/components', pathPrefix: false },
   ],
 
+  // Weights audited against actual `font-*` utility usage in app/ (2026-08-21):
+  //   Inter (`body { @apply font-sans }`, default body font) — 400 kept even
+  //     though no element uses `font-normal` explicitly: it's the CSS default
+  //     weight for any unstyled text, so dropping it would leave plain text
+  //     with no matching @font-face and force a browser-synthesized fallback.
+  //     500/600/700 confirmed via font-medium/semibold/bold (26/121/24 uses);
+  //     300/800/900 dropped — zero uses of font-light/extrabold/black.
+  //   Plus Jakarta Sans (`.font-display`) — only ever paired with
+  //     font-bold/font-extrabold (10/15 uses); the declared 600 was dead.
+  //   Space Grotesk (`.font-mono`) — only font-semibold/font-bold appear
+  //     (3/8 uses); 400/500 were declared but never requested.
+  //   Hind Siliguri — this family used to load a SECOND time via a raw
+  //     `@import url(fonts.googleapis.com/...)` in main.css that bypassed this
+  //     module's self-hosting entirely — removed. It was also never applied:
+  //     `font-bangla` existed in tailwind.config.js but no element used it, so
+  //     Bangla rendered in whatever the OS substituted. It is now appended to
+  //     the `sans` and `display` stacks instead, which reaches Bengali glyphs
+  //     by per-glyph fallback without touching Latin text — same fix as
+  //     MetagenFrontend, see there.
   googleFonts: {
     families: {
-      Inter: [300, 400, 500, 600, 700],
-      'Plus Jakarta Sans': [600, 700, 800],
-      'Space Grotesk': [400, 500],
+      Inter: [400, 500, 600, 700],
+      'Plus Jakarta Sans': [700, 800],
+      'Space Grotesk': [600, 700],
       'Hind Siliguri': [300, 400, 500, 600, 700],
     },
     display: 'swap',
+    // Self-host: without this, every page pays a separate DNS + TLS
+    // handshake to fonts.googleapis.com/fonts.gstatic.com before the fonts
+    // can even start downloading — pure latency on the LCP-critical path.
+    download: true,
     preload: true,
+    subsets: ['latin', 'bengali'],
   },
 
   app: {
@@ -142,8 +166,17 @@ export default defineNuxtConfig({
     vueI18n: './i18n.config.ts',
   },
 
+  // 'local' bundles @iconify-json/mdi + @iconify-json/heroicons (installed as
+  // devDependencies — both collections are actually used in app/) into the
+  // server build. Nothing else on this site draws icons from a free-text DB
+  // field the way MetagenFrontend's Service.icon does, but `fallbackToApi`
+  // (left on its default) still covers any icon name outside those two
+  // collections, so nothing can silently break from switching off 'remote'.
   icon: {
-    serverBundle: 'remote',
+    serverBundle: 'local',
+    clientBundle: {
+      scan: true,
+    },
   },
 
   routeRules: {
@@ -179,5 +212,39 @@ export default defineNuxtConfig({
     // Order status lookup pages — keep out of the index
     '/status/**':    { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
     '/bn/status/**': { headers: { 'X-Robots-Tag': 'noindex, nofollow' } },
+
+    // ── ISR ──────────────────────────────────────────────────────────
+    // Only the two routes below have zero per-visitor server-rendered state,
+    // verified by checking every component they use for `useAuth()` calls
+    // that aren't wrapped in <ClientOnly>: the shared UserMenu.vue IS wrapped
+    // (safe — its personalization happens client-side after hydration), but
+    // /order renders `v-if="isLoggedIn"` directly in its template with no
+    // such wrapper, so caching that page would bake one visitor's login
+    // state into the HTML everyone else gets served.
+    //
+    // ⚠️ Do NOT add isr to any other route here without re-checking this:
+    //   /order        — renders isLoggedIn server-side (see order.vue) —
+    //                    caching it leaks one visitor's auth state to others.
+    //   /status/**    — per-customer order data (domain, plan, price),
+    //                   looked up by the id+email in the request.
+    //   /thank-you    — reads useOrderStore(), a per-request useState that
+    //                   only ever holds real data via the client-side
+    //                   navigation from /order (a fresh SSR hit always sees
+    //                   it null). That LIKELY makes ISR safe here too — a
+    //                   cached response would just be the same empty-state
+    //                   HTML real orders never actually render from — but
+    //                   proving that with certainty means reasoning about
+    //                   how Nitro/Vercel's ISR interacts with per-request
+    //                   useState, which is exactly the kind of interaction
+    //                   worth NOT gambling on for a low-traffic (one visit
+    //                   per completed order), noindex page. Left as regular
+    //                   SSR rather than take that risk for negligible gain.
+    //   /dashboard    — already ssr:false, private.
+    //   /auth/**      — login/register forms; excluded on principle even
+    //                   though they hold no per-visitor data today.
+    '/':         { isr: 600 },
+    '/bn':       { isr: 600 },
+    '/terms':    { isr: 86400 },
+    '/bn/terms': { isr: 86400 },
   },
 })

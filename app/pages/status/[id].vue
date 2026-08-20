@@ -6,7 +6,8 @@ useSeoMeta({ title: `Order Status — ${orderId}`, robots: 'noindex' })
 
 interface OrderStatus {
   order_id: string
-  client_name: string
+  // client_name is deliberately absent: this page is public, so it must not
+  // echo back personal details about whoever placed the order.
   domain: string | null
   plan: string
   billing: string
@@ -17,7 +18,37 @@ interface OrderStatus {
   expires_at: string | null
 }
 
-const { data, error, pending } = await useFetch<OrderStatus>(`/api/status/${orderId}`)
+// The lookup needs the order id AND the email it was placed with — the id on
+// its own can be forwarded, screenshotted or guessed, and this page is public.
+//
+// The confirmation email links here WITH ?email=, so the customer's own link
+// still resolves in one click. Anyone arriving without it gets an inline prompt
+// rather than someone else's order details.
+const email = ref((route.query.email as string) || '')
+const hasEmail = computed(() => email.value.includes('@'))
+
+const { data, error, pending, refresh } = await useFetch<OrderStatus>(
+  `/api/status/${orderId}`,
+  {
+    query: { email },
+    // Nothing to ask for until we have an address.
+    immediate: hasEmail.value,
+    watch: false,
+  },
+)
+
+const submitting = ref(false)
+
+async function lookup() {
+  if (!hasEmail.value) return
+  submitting.value = true
+  try {
+    await refresh()
+  }
+  finally {
+    submitting.value = false
+  }
+}
 
 const statusConfig = computed(() => {
   const s = data.value?.status
@@ -52,8 +83,35 @@ const expDays = computed(() => daysLeft(data.value?.expires_at ?? null))
       <NuxtImg src="/images/logo/logo-light.png" alt="MetaGenDigital" class="h-10 w-auto" />
     </NuxtLink>
 
+    <!-- No email supplied — ask for it rather than revealing the order. -->
+    <div v-if="!hasEmail && !data" class="bg-white rounded-2xl border border-brand-border shadow-card p-8 max-w-md w-full">
+      <Icon name="mdi:shield-account-outline" class="w-12 h-12 text-brand-primary mx-auto mb-3" />
+      <h1 class="font-display font-bold text-xl text-brand-primary mb-2 text-center">Confirm it's your order</h1>
+      <p class="text-brand-text-muted text-sm text-center mb-5">
+        Enter the email address you used when ordering
+        <span class="font-mono font-bold text-brand-primary">{{ orderId }}</span>.
+      </p>
+      <form class="flex gap-2" @submit.prevent="lookup">
+        <input
+          v-model="email"
+          type="email"
+          autocomplete="email"
+          required
+          placeholder="you@example.com"
+          class="flex-1 px-4 py-3 rounded-lg border border-brand-border bg-brand-surface text-brand-primary text-sm outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 transition-colors"
+        />
+        <button
+          type="submit"
+          :disabled="submitting"
+          class="px-5 py-3 rounded-lg bg-brand-primary text-white font-semibold text-sm hover:brightness-110 transition-all disabled:opacity-60"
+        >
+          View
+        </button>
+      </form>
+    </div>
+
     <!-- Loading -->
-    <div v-if="pending" class="flex flex-col items-center gap-3 text-brand-text-muted">
+    <div v-else-if="pending" class="flex flex-col items-center gap-3 text-brand-text-muted">
       <svg class="w-10 h-10 animate-spin text-brand-primary" fill="none" viewBox="0 0 24 24">
         <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"/>
         <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"/>
@@ -65,7 +123,7 @@ const expDays = computed(() => daysLeft(data.value?.expires_at ?? null))
     <div v-else-if="error" class="bg-white rounded-2xl border border-red-200 shadow-card p-8 max-w-md w-full text-center">
       <Icon name="mdi:alert-circle" class="w-12 h-12 text-red-400 mx-auto mb-3" />
       <h1 class="font-display font-bold text-xl text-brand-primary mb-2">Order Not Found</h1>
-      <p class="text-brand-text-muted text-sm">No order found for <span class="font-mono font-bold">{{ orderId }}</span></p>
+      <p class="text-brand-text-muted text-sm">No order found for <span class="font-mono font-bold">{{ orderId }}</span> with that email address.</p>
       <NuxtLink to="/" class="mt-5 inline-flex items-center gap-2 px-5 py-2.5 rounded-btn bg-brand-primary text-white text-sm font-semibold hover:brightness-110 transition-all">
         <Icon name="mdi:home" class="w-4 h-4" />
         Back to Home
@@ -94,13 +152,6 @@ const expDays = computed(() => daysLeft(data.value?.expires_at ?? null))
 
       <!-- Info rows -->
       <div class="px-6 py-4 space-y-0 divide-y divide-brand-border">
-
-        <div class="flex justify-between py-3 text-sm">
-          <span class="text-brand-text-muted flex items-center gap-1.5">
-            <Icon name="mdi:account" class="w-4 h-4" /> Client
-          </span>
-          <span class="font-semibold text-brand-primary">{{ data.client_name }}</span>
-        </div>
 
         <div v-if="data.domain" class="flex justify-between py-3 text-sm">
           <span class="text-brand-text-muted flex items-center gap-1.5">

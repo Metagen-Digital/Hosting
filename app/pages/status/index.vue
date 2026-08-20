@@ -1,14 +1,16 @@
 <script setup lang="ts">
 useSeoMeta({ title: 'Check Hosting Status — MetaGenDigital', robots: 'noindex' })
 
-const router    = useRouter()
-const inputId   = ref('')
+const router     = useRouter()
+const inputId    = ref('')
+const inputEmail = ref('')
 const searching = ref(false)
 const error     = ref('')
 
 interface OrderStatus {
   order_id: string
-  client_name: string
+  // client_name is deliberately absent: a public lookup must not echo back
+  // personal details about whoever placed the order.
   domain: string | null
   plan: string
   billing: string
@@ -46,17 +48,26 @@ const expDays = computed(() => daysLeft(result.value?.expires_at ?? null))
 
 async function search() {
   const id = inputId.value.trim().toUpperCase()
+  const email = inputEmail.value.trim()
+
   if (!id) { error.value = 'Please enter an Order ID'; return }
+  if (!email.includes('@')) {
+    error.value = 'Please enter the email address you used when ordering'
+    return
+  }
 
   error.value  = ''
   result.value = null
   searching.value = true
 
   try {
-    const data = await $fetch<OrderStatus>(`/api/status/${id}`)
+    const data = await $fetch<OrderStatus>(`/api/status/${id}`, { query: { email } })
     result.value = data
-  } catch {
-    error.value = `No order found for "${id}". Please check the Order ID and try again.`
+  } catch (e: any) {
+    // One message for both "no such order" and "wrong email" — see the comment
+    // in server/api/status/[id].get.ts.
+    error.value = e?.data?.message
+      || 'No order found for that Order ID and email address. Please check both and try again.'
   } finally {
     searching.value = false
   }
@@ -81,18 +92,31 @@ function onKey(e: KeyboardEvent) {
       <div class="bg-[#1D1D47] px-6 py-5 text-center">
         <Icon name="mdi:magnify" class="w-8 h-8 text-[#b4b9dc] mx-auto mb-2" aria-hidden="true" />
         <h1 class="font-display font-bold text-white text-xl">Check Hosting Status</h1>
-        <p class="text-[#b4b9dc] text-xs mt-1">Enter your Order ID to view status</p>
+        <p class="text-[#b4b9dc] text-xs mt-1">Enter your Order ID and email to view status</p>
       </div>
 
       <!-- Search input -->
       <div class="px-6 py-6">
         <label class="block text-xs font-semibold text-brand-text-secondary mb-2">Order ID</label>
+        <input
+          v-model="inputId"
+          type="text"
+          placeholder="e.g. MGD-AB12CD34EF"
+          class="w-full px-4 py-3 mb-3 rounded-lg border border-brand-border bg-brand-surface text-brand-primary font-mono text-sm outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 transition-colors uppercase placeholder:normal-case placeholder:text-brand-text-muted"
+          @keydown="onKey"
+        />
+
+        <!-- Second factor. The Order ID alone no longer returns anything: it
+             can be forwarded, screenshotted or guessed, and this page is
+             public. -->
+        <label class="block text-xs font-semibold text-brand-text-secondary mb-2">Email used when ordering</label>
         <div class="flex gap-2">
           <input
-            v-model="inputId"
-            type="text"
-            placeholder="e.g. MGD-AB1234"
-            class="flex-1 px-4 py-3 rounded-lg border border-brand-border bg-brand-surface text-brand-primary font-mono text-sm outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 transition-colors uppercase placeholder:normal-case placeholder:text-brand-text-muted"
+            v-model="inputEmail"
+            type="email"
+            autocomplete="email"
+            placeholder="you@example.com"
+            class="flex-1 px-4 py-3 rounded-lg border border-brand-border bg-brand-surface text-brand-primary text-sm outline-none focus:border-brand-primary focus:ring-1 focus:ring-brand-primary/20 transition-colors placeholder:text-brand-text-muted"
             @keydown="onKey"
           />
           <button
@@ -144,10 +168,6 @@ function onKey(e: KeyboardEvent) {
 
         <!-- Info rows -->
         <div class="px-6 py-2 divide-y divide-brand-border">
-          <div class="flex justify-between py-2.5 text-sm">
-            <span class="text-brand-text-muted flex items-center gap-1.5"><Icon name="mdi:account" class="w-4 h-4" /> Client</span>
-            <span class="font-semibold text-brand-primary">{{ result.client_name }}</span>
-          </div>
           <div v-if="result.domain" class="flex justify-between py-2.5 text-sm">
             <span class="text-brand-text-muted flex items-center gap-1.5"><Icon name="mdi:web" class="w-4 h-4" /> Domain</span>
             <span class="font-mono font-semibold text-brand-primary">{{ result.domain }}</span>

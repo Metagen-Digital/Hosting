@@ -33,8 +33,15 @@ module.exports = {
         },
       },
       fontFamily: {
-        sans:    ['Inter', 'sans-serif'],
-        display: ['Plus Jakarta Sans', 'sans-serif'],
+        // 'Hind Siliguri' is appended to each Latin family rather than applied
+        // under :lang(bn). Font stacks resolve per GLYPH, so Latin text is found
+        // in Inter / Plus Jakarta Sans and never reaches it, while Bengali text
+        // — absent from both — falls through to it. English typography is
+        // therefore unchanged, and Bangla stops rendering in an arbitrary OS
+        // substitute. The family was already downloaded (nuxt.config.ts
+        // googleFonts, bengali subset) but nothing had ever applied it.
+        sans:    ['Inter', 'Hind Siliguri', 'sans-serif'],
+        display: ['Plus Jakarta Sans', 'Hind Siliguri', 'sans-serif'],
         mono:    ['Space Grotesk', 'monospace'],
         bangla:  ['Hind Siliguri', 'sans-serif'],
       },
